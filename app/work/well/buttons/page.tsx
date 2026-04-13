@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import CaseStudyLayout from "@/components/case-study/CaseStudyLayout";
 import SectionBreak from "@/components/case-study/SectionBreak";
 import DotLabel from "@/components/case-study/DotLabel";
-import CsImagePlaceholder from "@/components/case-study/CsImagePlaceholder";
 import BrightCard from "@/components/case-study/BrightCard";
 
 // ─── Easing ────────────────────────────────────────────────────────────────
