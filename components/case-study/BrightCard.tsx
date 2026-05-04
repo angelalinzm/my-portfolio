@@ -48,6 +48,8 @@ interface BrightCardProps {
   number?: string;
   /** Slot for fully custom body content (overrides `body` prop) */
   children?: React.ReactNode;
+  /** Hide the spinning watermark shape */
+  hideShape?: boolean;
 }
 
 export default function BrightCard({
@@ -64,6 +66,7 @@ export default function BrightCard({
   size = "default",
   number,
   children,
+  hideShape = false,
 }: BrightCardProps) {
   const isSmall = size === "small";
   const svgSize   = isSmall ? 80  : 120;
@@ -77,10 +80,11 @@ export default function BrightCard({
         padding: isSmall ? "18px 22px" : "28px 32px",
         position: "relative",
         overflow: "hidden",
+        height: "100%",
       }}
     >
       {/* ── Spinning watermark ── */}
-      <div
+      {!hideShape && <div
         style={{
           position: "absolute",
           bottom: svgOffset,
@@ -106,7 +110,7 @@ export default function BrightCard({
             fill="none"
           />
         </svg>
-      </div>
+      </div>}
 
       {/* ── Content ── */}
       <div style={{ position: "relative", zIndex: 1 }}>
@@ -164,7 +168,7 @@ export default function BrightCard({
                   fontWeight: 700,
                   letterSpacing: "-0.5px",
                   color: "#0d0d0d",
-                  fontStyle: titleItalic ? "italic" : "normal",
+                  fontStyle: "normal",
                   marginBottom: body || children ? 10 : 0,
                   lineHeight: 1.25,
                 }}
@@ -172,7 +176,7 @@ export default function BrightCard({
                 {titleEmphasis ? (
                   <>
                     {title.split(titleEmphasis)[0]}
-                    <em style={{ fontStyle: "italic" }}>{titleEmphasis}</em>
+                    <em style={{ fontStyle: "normal" }}>{titleEmphasis}</em>
                     {title.split(titleEmphasis)[1]}
                   </>
                 ) : title}

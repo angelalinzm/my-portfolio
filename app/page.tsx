@@ -36,11 +36,11 @@ export default function HomePage() {
             style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "-0.02em" }}
           >
             Design
-            <em className="italic" style={{ color: "#22c55e" }}>ing</em>{" "}
+            <em style={{ color: "#22c55e", fontStyle: "normal" }}>ing</em>{" "}
             experiences
             <br />
             that{" "}
-            <em className="italic" style={{ color: "#22c55e" }}>matter.</em>
+            <em style={{ color: "#22c55e", fontStyle: "normal" }}>matter.</em>
           </motion.h1>
 
           {/* Subline */}
@@ -48,7 +48,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.35 }}
-            className="text-base md:text-lg text-brand-text/60 max-w-xl leading-relaxed mb-10"
+            className="text-lg text-brand-text/60 max-w-xl leading-relaxed mb-10"
             style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
           >
             I bridge business, design, and research to craft human-centered
@@ -116,10 +116,10 @@ export default function HomePage() {
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Hi, I&apos;m{" "}
-              <em className="italic" style={{ color: "#22c55e" }}>Angela.</em>
+              <em style={{ color: "#22c55e", fontStyle: "normal" }}>Angela.</em>
             </h2>
             <p
-              className="text-base text-brand-text/60 leading-relaxed mb-6"
+              className="text-lg text-brand-text/60 leading-relaxed mb-6"
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
             >
               I&apos;m a product designer with 4+ years of experience designing

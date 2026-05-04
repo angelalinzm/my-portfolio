@@ -104,11 +104,38 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
+// ─── Two-column row ─────────────────────────────────────────────────────────
+function TwoColRow({
+  label,
+  children,
+  isLast = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-[220px_1fr]"
+      style={{
+        gap: "40px 72px",
+        padding: "40px 0",
+        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+      }}
+    >
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
+        {label}
+      </p>
+      <div>{children}</div>
+    </div>
+  );
+}
+
 // ─── Prose ─────────────────────────────────────────────────────────────────
 const prose: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
   fontWeight: 300,
-  fontSize: 16,
+  fontSize: 18,
   color: "#0d0d0d",
   lineHeight: 1.85,
 };
@@ -178,9 +205,11 @@ export default function MarketingWebsitePage() {
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
       <Section className="!pt-16">
-        <p style={prose}>
-          This was my first project at Pasito — and it set the tone for everything that followed. Pasito had a barebones website that didn&apos;t reflect what the product actually was or who it was for. With new messaging and a new product offering taking shape, the co-founders needed a website that could tell that story. I owned the design end to end: brand identity, visual language, layout, and IA across four pages.
-        </p>
+        <TwoColRow label="Overview" isLast>
+          <p style={prose}>
+            This was my first project at Pasito — and it set the tone for everything that followed. Pasito had a barebones website that didn&apos;t reflect what the product actually was or who it was for. With new messaging and a new product offering taking shape, the co-founders needed a website that could tell that story. I owned the design end to end: brand identity, visual language, layout, and IA across four pages.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ THE PROBLEM ══════════════════════════════════════════════════ */}
@@ -208,13 +237,12 @@ export default function MarketingWebsitePage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          Before designing anything, I audited the existing site with the co-founders. The verdict was quick: it didn&apos;t have the information or the design to attract clients. I moved into competitor research — studying how other fintech and HR benefits companies presented their product and mission online, and what messaging patterns were working. I brought findings back to Pauline and Julie, and we used that as the foundation to define what the new site needed to do.
-        </p>
-
-        <DotLabel color="#0284c7">The Original</DotLabel>
-
-        <ImgBox label="Original Pasito website — before" hexColor="#aaa" height={320} />
+        <TwoColRow label="Research" isLast>
+          <p style={prose} className="mb-8">
+            Before designing anything, I audited the existing site with the co-founders. The verdict was quick: it didn&apos;t have the information or the design to attract clients. I moved into competitor research — studying how other fintech and HR benefits companies presented their product and mission online, and what messaging patterns were working. I brought findings back to Pauline and Julie, and we used that as the foundation to define what the new site needed to do.
+          </p>
+          <ImgBox label="Original Pasito website — before" hexColor="#aaa" height={320} />
+        </TwoColRow>
       </Section>
 
       {/* ══ INFORMATION ARCHITECTURE ═════════════════════════════════════ */}
@@ -230,31 +258,32 @@ export default function MarketingWebsitePage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          With the co-founders writing the new content and messaging, I worked with them to organize everything into a four-page structure. The goal was a clear path: understand the product, understand the people behind it, decide to get in touch.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {[
-            { bg: "#fef3c7", color: "amber", tag: "PAGE 01", title: "Homepage",      shape: "hexagon",  spinDir: "spin",  dur: 20, body: "Core value proposition and key differentiators from competitors. The entry point that earns the click to learn more." },
-            { bg: "#dbeafe", color: "blue",  tag: "PAGE 02", title: "For Employers", shape: "diamond",  spinDir: "spinr", dur: 18, body: "How Pasito works for their client companies. Translating a complex product into a clear business case." },
-            { bg: "#d1fae5", color: "green", tag: "PAGE 03", title: "About Us",      shape: "triangle", spinDir: "spin",  dur: 22, body: "The founders' story and leadership details. Building trust through the people behind the product." },
-            { bg: "#ede9fe", color: "violet",tag: "PAGE 04", title: "Contact",       shape: "pentagon", spinDir: "spinr", dur: 16, body: "A form for potential clients to reach out. The conversion point — kept simple and frictionless." },
-          ].map((card, i) => (
-            <motion.div key={card.tag} {...fadeUp(i * 0.06)}>
-              <BrightCard
-                color={card.color as "amber"}
-                bg={card.bg}
-                tag={card.tag}
-                title={card.title}
-                shape={card.shape as "hexagon"}
-                spinDir={card.spinDir as "spin"}
-                spinDuration={card.dur}
-                body={card.body}
-              />
-            </motion.div>
-          ))}
-        </div>
+        <TwoColRow label="Site Structure" isLast>
+          <p style={prose} className="mb-8">
+            With the co-founders writing the new content and messaging, I worked with them to organize everything into a four-page structure. The goal was a clear path: understand the product, understand the people behind it, decide to get in touch.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {[
+              { bg: "#fef3c7", color: "amber", tag: "PAGE 01", title: "Homepage",      shape: "hexagon",  spinDir: "spin",  dur: 20, body: "Core value proposition and key differentiators from competitors. The entry point that earns the click to learn more." },
+              { bg: "#dbeafe", color: "blue",  tag: "PAGE 02", title: "For Employers", shape: "diamond",  spinDir: "spinr", dur: 18, body: "How Pasito works for their client companies. Translating a complex product into a clear business case." },
+              { bg: "#d1fae5", color: "green", tag: "PAGE 03", title: "About Us",      shape: "triangle", spinDir: "spin",  dur: 22, body: "The founders' story and leadership details. Building trust through the people behind the product." },
+              { bg: "#ede9fe", color: "violet",tag: "PAGE 04", title: "Contact",       shape: "pentagon", spinDir: "spinr", dur: 16, body: "A form for potential clients to reach out. The conversion point — kept simple and frictionless." },
+            ].map((card, i) => (
+              <motion.div key={card.tag} {...fadeUp(i * 0.06)}>
+                <BrightCard
+                  color={card.color as "amber"}
+                  bg={card.bg}
+                  tag={card.tag}
+                  title={card.title}
+                  shape={card.shape as "hexagon"}
+                  spinDir={card.spinDir as "spin"}
+                  spinDuration={card.dur}
+                  body={card.body}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ DESIGN ═══════════════════════════════════════════════════════ */}
@@ -270,37 +299,33 @@ export default function MarketingWebsitePage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          I built the brand identity from scratch. The central motif — curvy shapes and lines that intertwine — was intentional: it reflects Pasito&apos;s core message of inclusivity and support, the idea that employers and employees are connected. The design system carried through every page: buttons carefully placed to guide users through the site, a layout built to lead rather than overwhelm.
-        </p>
+        <TwoColRow label="The Motif">
+          <p style={prose} className="mb-8">
+            I built the brand identity from scratch. The central motif — curvy shapes and lines that intertwine — was intentional: it reflects Pasito&apos;s core message of inclusivity and support, the idea that employers and employees are connected. The design system carried through every page: buttons carefully placed to guide users through the site, a layout built to lead rather than overwhelm.
+          </p>
+          <BrightCard
+            color="pink"
+            bg="#fce7f3"
+            tag="DESIGN INTENT"
+            title="Curves that connect."
+            titleEmphasis="connect."
+            shape="hexagon"
+            spinDir="spinr"
+            spinDuration={20}
+            body="Curvy shapes and lines that intertwine — not decorative, but intentional. Pasito's mission is about connection between employers and employees. The visual language needed to reflect that."
+          />
+        </TwoColRow>
 
-        <DotLabel color="#0284c7">The Motif</DotLabel>
-
-        <BrightCard
-          color="pink"
-          bg="#fce7f3"
-          tag="DESIGN INTENT"
-          title="Curves that connect."
-          titleEmphasis="connect."
-          shape="hexagon"
-          spinDir="spinr"
-          spinDuration={20}
-          body="Curvy shapes and lines that intertwine — not decorative, but intentional. Pasito's mission is about connection between employers and employees. The visual language needed to reflect that."
-        />
-
-        <div className="mt-10">
-          <DotLabel color="#0284c7">Deliverables</DotLabel>
-        </div>
-
-        <p style={prose} className="mb-8">
-          After multiple iterations in Figma, I delivered final designs for all four pages.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <ImgBox label="Homepage"      hexColor="#fb923c" height={380} />
-          <ImgBox label="For Employers" hexColor="#0284c7" height={380} />
-          <ImgBox label="About Us"      hexColor="#4f46e5" height={380} />
-        </div>
+        <TwoColRow label="Deliverables" isLast>
+          <p style={prose} className="mb-8">
+            After multiple iterations in Figma, I delivered final designs for all four pages.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <ImgBox label="Homepage"      hexColor="#fb923c" height={380} />
+            <ImgBox label="For Employers" hexColor="#0284c7" height={380} />
+            <ImgBox label="About Us"      hexColor="#4f46e5" height={380} />
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
@@ -309,15 +334,7 @@ export default function MarketingWebsitePage() {
         className="px-8 md:px-12"
         style={{ paddingTop: 64, paddingBottom: 56, marginTop: 64, borderTop: "1px solid #efefec" }}
       >
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 18,
-            color: "#0d0d0d",
-            lineHeight: 1.85,
-          }}
-        >
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.85 }}>
           The website shipped and went live — Pasito&apos;s public face as the company grew. It was the foundation the brand was built on through their YCombinator backing in 2022. Starting here, as the sole designer on my first project at my first startup, taught me what it means to own something fully: the decisions, the iterations, and the outcome.
         </p>
       </motion.div>

@@ -14,6 +14,7 @@ export const companies = [
         label: "AI Workflow",
         size: "large",
         gradient: "linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%)",
+        imageSrc: "/images/copley/agent.png",
         route: "/work/copley/ai-brief",
         inProgress: false,
         description:
@@ -97,6 +98,7 @@ export const companies = [
         label: "Feature Dev",
         size: "large",
         gradient: "linear-gradient(135deg, #0369a1 0%, #38bdf8 60%, #7dd3fc 100%)",
+        imageSrc: "/images/well/well-in-app-challenges.png",
         route: "/work/well/in-app-challenges",
         inProgress: false,
         description:
@@ -121,6 +123,7 @@ export const companies = [
         label: "UX/UI Design",
         size: "small",
         gradient: "linear-gradient(135deg, #0891b2 0%, #22d3ee 100%)",
+        imageSrc: "/images/well/well-onboarding.png",
         route: "/work/well/web-onboarding",
         inProgress: false,
         description:
@@ -145,6 +148,7 @@ export const companies = [
         label: "Design Systems",
         size: "small",
         gradient: "linear-gradient(135deg, #1d4ed8 0%, #60a5fa 100%)",
+        imageSrc: "/images/well/well-buttons.png",
         route: "/work/well/buttons",
         inProgress: false,
         description:

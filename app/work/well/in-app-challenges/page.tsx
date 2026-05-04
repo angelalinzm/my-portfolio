@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import CaseStudyLayout from "@/components/case-study/CaseStudyLayout";
 import SectionBreak from "@/components/case-study/SectionBreak";
 import DotLabel from "@/components/case-study/DotLabel";
-import CsImagePlaceholder from "@/components/case-study/CsImagePlaceholder";
+import dynamic from "next/dynamic";
+const PdfStepper = dynamic(() => import("@/components/case-study/PdfStepper"), { ssr: false });
 import PullQuote from "@/components/case-study/PullQuote";
 import BrightCard from "@/components/case-study/BrightCard";
 import { inAppChallengesContent as c, inAppChallengesCardTokens as tokens } from "@/data/projects";
@@ -107,11 +108,46 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
+// ─── Two-column row ─────────────────────────────────────────────────────────
+function TwoColRow({
+  label,
+  children,
+  isLast = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-[220px_1fr]"
+      style={{
+        gap: "40px 72px",
+        padding: "40px 0",
+        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+      }}
+    >
+      <p
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontWeight: 500,
+          fontSize: 18,
+          color: "#0d0d0d",
+          paddingTop: 2,
+        }}
+      >
+        {label}
+      </p>
+      <div>{children}</div>
+    </div>
+  );
+}
+
 // ─── Prose (no max-width — spans full content width) ───────────────────────
 const prose: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
   fontWeight: 300,
-  fontSize: 15,
+  fontSize: 18,
   color: "#555",
   lineHeight: 1.75,
 };
@@ -152,6 +188,7 @@ export default function InAppChallengesPage() {
       headlineEmphasis={c.headlineEmphasis}
       subtitle={c.subtitle}
       heroImageLabel={c.heroImageLabel}
+      heroImageSrc="/images/well/well-in-app-challenges.png"
       heroShapes={<HeroShapes />}
       meta={c.meta}
       prev={c.nav.prev}
@@ -169,33 +206,32 @@ export default function InAppChallengesPage() {
         dotColor="#22c55e"
       />
 
-      {/* The Start */}
       <Section>
-        <DotLabel color="#0284c7">The Start</DotLabel>
-        <p style={prose} className="mb-6">{c.theStart.para1}</p>
+        <TwoColRow label="The Start">
+          <p style={prose} className="mb-6">{c.theStart.para1}</p>
+          <PullQuote
+            quote={c.theStart.pullQuote.text}
+            emphasisWord={c.theStart.pullQuote.emphasis}
+            source={c.theStart.pullQuote.source}
+            accentColor="#0284c7"
+          />
+          <p style={prose} className="mt-6">{c.theStart.para2}</p>
+        </TwoColRow>
 
-        {/* Pull quote — kept as-is per spec */}
-        <PullQuote
-          quote={c.theStart.pullQuote.text}
-          emphasisWord={c.theStart.pullQuote.emphasis}
-          source={c.theStart.pullQuote.source}
-          accentColor="#0284c7"
-        />
-
-        <p style={prose} className="mt-6 mb-8">{c.theStart.para2}</p>
-
-        {/* Requirements — kept as-is per spec */}
-        <p className="mb-3" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
-          Requirements
-        </p>
-        <ul className="space-y-2.5">
-          {c.theStart.requirements.map((req) => (
-            <li key={req} className="flex items-start gap-3">
-              <div className="rounded-full mt-1.5 flex-shrink-0" style={{ width: 7, height: 7, background: "#0284c7" }} />
-              <span style={{ ...prose, fontSize: 14 }}>{req}</span>
-            </li>
-          ))}
-        </ul>
+        <TwoColRow label="Requirements" isLast>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {c.theStart.requirements.map((req, i) => (
+              <div key={req} className="flex items-start gap-4" style={{ background: "#f7f7f5", borderRadius: 14, padding: "18px 20px" }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 400, color: "#0d0d0d", lineHeight: 1.65 }}>
+                  {req}
+                </p>
+              </div>
+            ))}
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ RESEARCH ═════════════════════════════════════════════════════ */}
@@ -211,48 +247,52 @@ export default function InAppChallengesPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">{c.research.para}</p>
+        <TwoColRow label="HEXAD Framework">
+          <p style={prose} className="mb-8">{c.research.para}</p>
+          <div className="overflow-hidden mx-auto" style={{ borderRadius: 16, maxWidth: "75%" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/well/hexad.png"
+              alt="HEXAD user type framework"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            />
+          </div>
+        </TwoColRow>
 
-        <div className="mb-8 relative">
-          <CsImagePlaceholder label="Habit formation framework" variant="short" hexColor="#4f46e5" />
-        </div>
+        <TwoColRow label="User Types" isLast>
+          <p className="mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
+            HEXAD User Types
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <BrightCard
+              color={t.hexad.extrinsic.color as "amber"}
+              tag="Extrinsic · motivated by rewards"
+              shape={t.hexad.extrinsic.shape as "diamond"}
+              spinDir={t.hexad.extrinsic.spinDir as "spinr"}
+              spinDuration={t.hexad.extrinsic.spinDuration}
+            >
+              <div className="space-y-3 mt-1">
+                {c.research.extrinsic.map((u) => (
+                  <UserPair key={u.type} type={u.type} desc={u.desc} />
+                ))}
+              </div>
+            </BrightCard>
 
-        <p className="mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
-          HEXAD User Types
-        </p>
-
-        {/* HEXAD grid — BrightCards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {/* Extrinsic */}
-          <BrightCard
-            color={t.hexad.extrinsic.color as "amber"}
-            tag="Extrinsic · motivated by rewards"
-            shape={t.hexad.extrinsic.shape as "diamond"}
-            spinDir={t.hexad.extrinsic.spinDir as "spinr"}
-            spinDuration={t.hexad.extrinsic.spinDuration}
-          >
-            <div className="space-y-3 mt-1">
-              {c.research.extrinsic.map((u) => (
-                <UserPair key={u.type} type={u.type} desc={u.desc} />
-              ))}
-            </div>
-          </BrightCard>
-
-          {/* Intrinsic */}
-          <BrightCard
-            color={t.hexad.intrinsic.color as "teal"}
-            tag="Intrinsic · personally motivated"
-            shape={t.hexad.intrinsic.shape as "hexagon"}
-            spinDir={t.hexad.intrinsic.spinDir as "spin"}
-            spinDuration={t.hexad.intrinsic.spinDuration}
-          >
-            <div className="space-y-3 mt-1">
-              {c.research.intrinsic.map((u) => (
-                <UserPair key={u.type} type={u.type} desc={u.desc} />
-              ))}
-            </div>
-          </BrightCard>
-        </div>
+            <BrightCard
+              color={t.hexad.intrinsic.color as "teal"}
+              tag="Intrinsic · personally motivated"
+              shape={t.hexad.intrinsic.shape as "hexagon"}
+              spinDir={t.hexad.intrinsic.spinDir as "spin"}
+              spinDuration={t.hexad.intrinsic.spinDuration}
+            >
+              <div className="space-y-3 mt-1">
+                {c.research.intrinsic.map((u) => (
+                  <UserPair key={u.type} type={u.type} desc={u.desc} />
+                ))}
+              </div>
+            </BrightCard>
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ IDEATION ═════════════════════════════════════════════════════ */}
@@ -267,62 +307,82 @@ export default function InAppChallengesPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">{c.ideation.para}</p>
+        <TwoColRow label="Leaving Personas Behind">
+          <p style={prose}>{c.ideation.para}</p>
+        </TwoColRow>
 
-        {/* Lever pills — kept as-is per spec */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {c.ideation.levers.map((lever) => (
-            <span
-              key={lever}
-              className="text-sm font-medium"
-              style={{ background: "#f0f9ff", color: "#0284c7", borderRadius: 100, padding: "6px 14px", fontFamily: "'DM Sans', sans-serif" }}
-            >
-              {lever}
-            </span>
-          ))}
-        </div>
+        <TwoColRow label="Levers">
+          <div className="flex flex-wrap gap-2">
+            {c.ideation.levers.map((lever) => (
+              <span
+                key={lever}
+                className="text-sm font-medium"
+                style={{ background: "#f0f9ff", color: "#0284c7", borderRadius: 100, padding: "6px 14px", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                {lever}
+              </span>
+            ))}
+          </div>
+        </TwoColRow>
 
-        <div className="mb-10 relative">
-          <CsImagePlaceholder label="Challenges user stories workshop" variant="tall" hexColor="#4f46e5" />
-        </div>
-
-        <p className="mb-3 mt-2" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
-          Presenting to Stakeholders
-        </p>
-        <p style={prose} className="mb-8">{c.ideation.stakeholdersPara}</p>
-
-        <p className="mb-3" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
-          Separating the User Flows
-        </p>
-        <p style={prose} className="mb-6">{c.ideation.tracksPara}</p>
-
-        {/* Track cards — BrightCards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-          <BrightCard
-            color={t.tracks[0].color as "violet"}
-            tag="Track A"
-            title="Challenges"
-            titleItalic
-            body="Ongoing engagement mechanics to increase overall app adoption."
-            shape={t.tracks[0].shape as "diamond"}
-            spinDir={t.tracks[0].spinDir as "spinr"}
-            spinDuration={t.tracks[0].spinDuration}
-          />
-          <BrightCard
-            color={t.tracks[1].color as "pink"}
-            tag="Track B"
-            title="Offers"
-            titleItalic
-            body="Targeted incentives tied to specific KPIs — may not impact overall adoption."
-            shape={t.tracks[1].shape as "hexagon"}
-            spinDir={t.tracks[1].spinDir as "spin"}
-            spinDuration={t.tracks[1].spinDuration}
+        {/* Full-width: user stories image */}
+        <div
+          className="w-full overflow-hidden"
+          style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/well/well-user-stories.png"
+            alt="Challenges user stories workshop"
+            style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }}
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
-          <CsImagePlaceholder label="Challenges flow diagram" variant="short" hexColor="#0284c7" />
-          <CsImagePlaceholder label="Offers flow diagram" variant="short" hexColor="#fb923c" />
+        <TwoColRow label="Presenting to Stakeholders">
+          <p style={prose}>{c.ideation.stakeholdersPara}</p>
+        </TwoColRow>
+
+        {/* Full-width: PDF stepper */}
+        <div className="w-full" style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+          <PdfStepper src="/images/well/engagement-user-stories.pdf" startPage={13} />
+        </div>
+
+        <TwoColRow label="Separating User Flows">
+          <p style={prose} className="mb-6">{c.ideation.tracksPara}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <BrightCard
+              color={t.tracks[0].color as "violet"}
+              tag="Track A"
+              title="Challenges"
+              titleItalic
+              body="Ongoing engagement mechanics to increase overall app adoption."
+              shape={t.tracks[0].shape as "diamond"}
+              spinDir={t.tracks[0].spinDir as "spinr"}
+              spinDuration={t.tracks[0].spinDuration}
+            />
+            <BrightCard
+              color={t.tracks[1].color as "pink"}
+              tag="Track B"
+              title="Offers"
+              titleItalic
+              body="Targeted incentives tied to specific KPIs — may not impact overall adoption."
+              shape={t.tracks[1].shape as "hexagon"}
+              spinDir={t.tracks[1].spinDir as "spin"}
+              spinDuration={t.tracks[1].spinDuration}
+            />
+          </div>
+        </TwoColRow>
+
+        {/* Full-width: challenges + offers diagrams */}
+        <div className="flex flex-col gap-4 pt-10">
+          <div className="overflow-hidden" style={{ borderRadius: 16 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/well/challenges.png" alt="Challenges flow diagram" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
+          <div className="overflow-hidden" style={{ borderRadius: 16 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/well/offers.png" alt="Offers flow diagram" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
         </div>
       </Section>
 
@@ -339,36 +399,41 @@ export default function InAppChallengesPage() {
       />
 
       <Section>
-        {/* Intro para */}
-        <p style={prose} className="mb-8">{c.design.paras[0]}</p>
+        <TwoColRow label="Overview">
+          <p style={prose}>{c.design.paras[0]}</p>
+        </TwoColRow>
 
-        {/* Key decision BrightCards (replace paras 2 & 3) */}
-        <div className="flex flex-col gap-3 mb-8">
-          <BrightCard
-            color={t.keyDecisions[0].color as "blue"}
-            tag="Key decision"
-            title='Rewards show "ready to claim" throughout — not just at the end'
-            body="Extrinsic users need visible proof the system is working. Making points visible throughout kept the reward loop active even before intrinsic motivation kicked in."
-            shape={t.keyDecisions[0].shape as "hexagon"}
-            spinDir={t.keyDecisions[0].spinDir as "spinr"}
-            spinDuration={t.keyDecisions[0].spinDuration}
-          />
-          <BrightCard
-            color={t.keyDecisions[1].color as "green"}
-            tag="The outcome"
-            title="Constraint pushed toward clearer hierarchy"
-            body="Rather than relying on complex interactions, the constraint pushed me toward stronger information hierarchy — making the design more accessible, not less."
-            shape={t.keyDecisions[1].shape as "diamond"}
-            spinDir={t.keyDecisions[1].spinDir as "spin"}
-            spinDuration={t.keyDecisions[1].spinDuration}
-          />
-        </div>
+        <TwoColRow label="Key Decisions">
+          <div className="flex flex-col gap-3">
+            <BrightCard
+              color={t.keyDecisions[0].color as "blue"}
+              tag="Key decision"
+              title='Rewards show "ready to claim" throughout — not just at the end'
+              body="Extrinsic users need visible proof the system is working. Making points visible throughout kept the reward loop active even before intrinsic motivation kicked in."
+              shape={t.keyDecisions[0].shape as "hexagon"}
+              spinDir={t.keyDecisions[0].spinDir as "spinr"}
+              spinDuration={t.keyDecisions[0].spinDuration}
+            />
+            <BrightCard
+              color={t.keyDecisions[1].color as "green"}
+              tag="The outcome"
+              title="Constraint pushed toward clearer hierarchy"
+              body="Rather than relying on complex interactions, the constraint pushed me toward stronger information hierarchy — making the design more accessible, not less."
+              shape={t.keyDecisions[1].shape as "diamond"}
+              spinDir={t.keyDecisions[1].spinDir as "spin"}
+              spinDuration={t.keyDecisions[1].spinDuration}
+            />
+          </div>
+        </TwoColRow>
 
-        {/* Delivery para */}
-        <p style={prose} className="mb-8">{c.design.paras[3]}</p>
+        <TwoColRow label="Delivery" isLast>
+          <p style={prose}>{c.design.paras[3]}</p>
+        </TwoColRow>
 
-        <div className="relative">
-          <CsImagePlaceholder label="Lo-fi and hi-fi wireframes — 3 screens" variant="tall" hexColor="#22c55e" />
+        {/* Full-width: hi-fi screens */}
+        <div className="pt-10 overflow-hidden" style={{ borderRadius: 16 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/well/well-hifi.png" alt="Lo-fi and hi-fi wireframes" style={{ width: "100%", height: "auto", display: "block" }} />
         </div>
       </Section>
 
@@ -384,32 +449,32 @@ export default function InAppChallengesPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-6">{c.futureStates.intro}</p>
-
-        {/* Future state — process step layout */}
-        <div className="space-y-10 mb-14">
-          {c.futureStates.items.map((item, i) => (
-            <motion.div key={item.number} {...fadeUp(i * 0.06)} className="flex gap-6 md:gap-8">
-              <div className="flex-shrink-0">
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", fontWeight: 700, color: "#7dd3fc", lineHeight: 1 }}
-                >
-                  {item.number}
-                </span>
-              </div>
-              <div className="pt-1">
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 600, color: "#0d0d0d", lineHeight: 1.75 }}>
-                  {item.text}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <TwoColRow label="Future States" isLast>
+          <p style={prose} className="mb-8">{c.futureStates.intro}</p>
+          <div className="space-y-10">
+            {c.futureStates.items.map((item, i) => (
+              <motion.div key={item.number} {...fadeUp(i * 0.06)} className="flex gap-6 md:gap-8">
+                <div className="flex-shrink-0">
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", fontWeight: 700, color: "#7dd3fc", lineHeight: 1 }}
+                  >
+                    {item.number}
+                  </span>
+                </div>
+                <div className="pt-1">
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 600, color: "#0d0d0d", lineHeight: 1.75 }}>
+                    {item.text}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </TwoColRow>
 
         {/* Closing paragraph */}
         <motion.div {...fadeUp(0.15)} className="flex justify-center" style={{ padding: "48px 0" }}>
           <p
-            className="italic text-center"
+            className="text-center"
             style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, color: "#0d0d0d", lineHeight: 1.7 }}
           >
             {c.futureStates.closing}

@@ -30,7 +30,7 @@ export default function PullQuote({
           top: -10,
           left: 20,
           lineHeight: 1,
-          fontStyle: "italic",
+          fontStyle: "normal",
         }}
         aria-hidden="true"
       >
@@ -42,7 +42,7 @@ export default function PullQuote({
         style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: 24,
-          fontStyle: "italic",
+          fontStyle: "normal",
           color: "#0d0d0d",
           lineHeight: 1.45,
         }}

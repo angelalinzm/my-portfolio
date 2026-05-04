@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface ProjectCardProps {
@@ -10,6 +11,7 @@ interface ProjectCardProps {
   route: string;
   inProgress?: boolean;
   size?: "large" | "small";
+  imageSrc?: string;
 }
 
 export default function ProjectCard({
@@ -19,6 +21,7 @@ export default function ProjectCard({
   route,
   inProgress = false,
   size = "small",
+  imageSrc,
 }: ProjectCardProps) {
   return (
     <Link href={route} className="block h-full min-h-[160px]">
@@ -26,8 +29,17 @@ export default function ProjectCard({
         whileHover={{ y: -4, scale: 1.015 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         className="group relative overflow-hidden rounded-2xl h-full min-h-[160px]"
-        style={{ background: gradient }}
+        style={{ background: imageSrc ? undefined : gradient }}
       >
+        {imageSrc && (
+          <Image
+            src={imageSrc}
+            alt={title}
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        )}
         {/* Gradient overlay */}
         <div
           className="absolute inset-0 rounded-2xl"

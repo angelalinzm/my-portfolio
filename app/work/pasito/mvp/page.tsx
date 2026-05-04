@@ -104,11 +104,38 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
+// ─── Two-column row ─────────────────────────────────────────────────────────
+function TwoColRow({
+  label,
+  children,
+  isLast = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-[220px_1fr]"
+      style={{
+        gap: "40px 72px",
+        padding: "40px 0",
+        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+      }}
+    >
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
+        {label}
+      </p>
+      <div>{children}</div>
+    </div>
+  );
+}
+
 // ─── Prose ─────────────────────────────────────────────────────────────────
 const prose: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
   fontWeight: 300,
-  fontSize: 16,
+  fontSize: 18,
   color: "#0d0d0d",
   lineHeight: 1.85,
 };
@@ -178,9 +205,11 @@ export default function MvpPage() {
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
       <Section className="!pt-16">
-        <p style={prose}>
-          This was my largest undertaking at Pasito. From June 2021 through December 2022, I was the sole designer taking their first product from a few rough sketches to a validated, clickable prototype — running research, leading user testing, and iterating through two dashboards. I didn&apos;t just design the product. I helped build the design practice from the ground up.
-        </p>
+        <TwoColRow label="Overview" isLast>
+          <p style={prose}>
+            This was my largest undertaking at Pasito. From June 2021 through December 2022, I was the sole designer taking their first product from a few rough sketches to a validated, clickable prototype — running research, leading user testing, and iterating through two dashboards. I didn&apos;t just design the product. I helped build the design practice from the ground up.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ THE PROBLEM ══════════════════════════════════════════════════ */}
@@ -196,9 +225,11 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose}>
-          Employees struggle to understand their benefits — what they&apos;re entitled to, what saves them money, and how to actually access it through their company. Employers lose money on taxes when benefits go unused. How do we build a product that bridges that gap for both sides?
-        </p>
+        <TwoColRow label="The Problem" isLast>
+          <p style={prose}>
+            Employees struggle to understand their benefits — what they&apos;re entitled to, what saves them money, and how to actually access it through their company. Employers lose money on taxes when benefits go unused. How do we build a product that bridges that gap for both sides?
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ RESEARCH ═════════════════════════════════════════════════════ */}
@@ -214,13 +245,12 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          Pauline and Julie were business-minded founders who hadn&apos;t worked with a designer before. One of my first contributions wasn&apos;t a design — it was introducing them to a design process. I ran a series of workshops to help the team ideate together: affinity mapping, crazy 8s, and feedback synthesis from marketing validation interviews with working parents. What came out of those sessions was a shared understanding of what the product actually needed to be — not just what the founders had imagined, but what users were asking for.
-        </p>
-
-        <DotLabel color="#0284c7">Affinity Map</DotLabel>
-
-        <ImgBox label="Workshop affinity map" hexColor="#22c55e" height={300} />
+        <TwoColRow label="Research" isLast>
+          <p style={prose} className="mb-8">
+            Pauline and Julie were business-minded founders who hadn&apos;t worked with a designer before. One of my first contributions wasn&apos;t a design — it was introducing them to a design process. I ran a series of workshops to help the team ideate together: affinity mapping, crazy 8s, and feedback synthesis from marketing validation interviews with working parents. What came out of those sessions was a shared understanding of what the product actually needed to be — not just what the founders had imagined, but what users were asking for.
+          </p>
+          <ImgBox label="Workshop affinity map" hexColor="#22c55e" height={300} />
+        </TwoColRow>
       </Section>
 
       {/* ══ IDEATION ═════════════════════════════════════════════════════ */}
@@ -236,14 +266,15 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          With a clearer picture of the product, we developed user flows for the core experience: a question flow that would collect information from employees upfront, and the dashboard they&apos;d land on after. I mapped out a site map and sketched the structure before moving into Figma.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <ImgBox label="Site map" hexColor="#fb923c" height={240} />
-          <ImgBox label="Early sketches" hexColor="#4f46e5" height={240} />
-        </div>
+        <TwoColRow label="Ideation" isLast>
+          <p style={prose} className="mb-8">
+            With a clearer picture of the product, we developed user flows for the core experience: a question flow that would collect information from employees upfront, and the dashboard they&apos;d land on after. I mapped out a site map and sketched the structure before moving into Figma.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ImgBox label="Site map" hexColor="#fb923c" height={240} />
+            <ImgBox label="Early sketches" hexColor="#4f46e5" height={240} />
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ DESIGN ═══════════════════════════════════════════════════════ */}
@@ -259,38 +290,34 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          I built the lo-fi prototype first, working through the core screens: the onboarding question flow, paycheck comparison, income tax comparison, the learn tab, and the employee dashboard. The design principle throughout: make complex financial information feel approachable. The product was asking people to understand FSAs, dependent care tax credits, and paycheck breakdowns — none of which are intuitive. The design had to do real work.
-        </p>
+        <TwoColRow label="Lo-Fi Prototype">
+          <p style={prose} className="mb-8">
+            I built the lo-fi prototype first, working through the core screens: the onboarding question flow, paycheck comparison, income tax comparison, the learn tab, and the employee dashboard. The design principle throughout: make complex financial information feel approachable. The product was asking people to understand FSAs, dependent care tax credits, and paycheck breakdowns — none of which are intuitive. The design had to do real work.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <ImgBox label="Question flow — lo-fi" hexColor="#0284c7" height={240} />
+            <ImgBox label="Paycheck comparison — lo-fi" hexColor="#0284c7" height={240} />
+          </div>
+          <BrightCard
+            color="blue"
+            bg="#d6f1fc"
+            tag="DESIGN PRINCIPLE"
+            title="Make complexity feel approachable."
+            titleEmphasis="approachable."
+            shape="hexagon"
+            spinDir="spinr"
+            spinDuration={20}
+            body="FSAs, dependent care tax credits, paycheck breakdowns — none of this is intuitive. The design's job was to carry that cognitive weight so users didn't have to. Simple layout. Clear hierarchy. No jargon where it could be avoided."
+          />
+        </TwoColRow>
 
-        <DotLabel color="#0284c7">Lo-Fi Prototype</DotLabel>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <ImgBox label="Question flow — lo-fi" hexColor="#0284c7" height={240} />
-          <ImgBox label="Paycheck comparison — lo-fi" hexColor="#0284c7" height={240} />
-        </div>
-
-        <BrightCard
-          color="blue"
-          bg="#d6f1fc"
-          tag="DESIGN PRINCIPLE"
-          title="Make complexity feel approachable."
-          titleEmphasis="approachable."
-          shape="hexagon"
-          spinDir="spinr"
-          spinDuration={20}
-          body="FSAs, dependent care tax credits, paycheck breakdowns — none of this is intuitive. The design's job was to carry that cognitive weight so users didn't have to. Simple layout. Clear hierarchy. No jargon where it could be avoided."
-        />
-
-        <div className="mt-10">
-          <DotLabel color="#0284c7">Employee Dashboard</DotLabel>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <ImgBox label="Homepage" hexColor="#22c55e" height={280} />
-          <ImgBox label="Paycheck comparison" hexColor="#22c55e" height={280} />
-          <ImgBox label="Discounts" hexColor="#22c55e" height={280} />
-        </div>
+        <TwoColRow label="Employee Dashboard" isLast>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <ImgBox label="Homepage" hexColor="#22c55e" height={280} />
+            <ImgBox label="Paycheck comparison" hexColor="#22c55e" height={280} />
+            <ImgBox label="Discounts" hexColor="#22c55e" height={280} />
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ USER TESTING ═════════════════════════════════════════════════ */}
@@ -306,21 +333,22 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          After developing the initial prototype, I led over 20 user testing interviews with working parents over Google Meet. The biggest finding: employees found it genuinely hard to figure out which benefits were best for their situation — largely because benefits information at most companies is disorganized and hard to parse. That insight directly shaped how we redesigned the learn tab and paycheck comparison breakdowns in subsequent iterations.
-        </p>
-
-        <BrightCard
-          color="violet"
-          bg="#ede9fe"
-          tag="KEY INSIGHT"
-          title="The problem wasn't the product. It was the ecosystem."
-          titleEmphasis="ecosystem."
-          shape="diamond"
-          spinDir="spin"
-          spinDuration={18}
-          body="Users weren't confused by Pasito — they were confused by their company's benefits in general. Disorganized, inaccessible, never explained. Pasito's job was to cut through that noise and make the right choice obvious."
-        />
+        <TwoColRow label="User Testing" isLast>
+          <p style={prose} className="mb-8">
+            After developing the initial prototype, I led over 20 user testing interviews with working parents over Google Meet. The biggest finding: employees found it genuinely hard to figure out which benefits were best for their situation — largely because benefits information at most companies is disorganized and hard to parse. That insight directly shaped how we redesigned the learn tab and paycheck comparison breakdowns in subsequent iterations.
+          </p>
+          <BrightCard
+            color="violet"
+            bg="#ede9fe"
+            tag="KEY INSIGHT"
+            title="The problem wasn't the product. It was the ecosystem."
+            titleEmphasis="ecosystem."
+            shape="diamond"
+            spinDir="spin"
+            spinDuration={18}
+            body="Users weren't confused by Pasito — they were confused by their company's benefits in general. Disorganized, inaccessible, never explained. Pasito's job was to cut through that noise and make the right choice obvious."
+          />
+        </TwoColRow>
       </Section>
 
       {/* ══ EMPLOYER DASHBOARD ═══════════════════════════════════════════ */}
@@ -336,11 +364,12 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          Alongside the employee product, I designed an employer dashboard for HR professionals — following the same research and iteration process. By December 2022, the MVP had reached a point of maturity that set the foundation for what Pasito would become after YCombinator.
-        </p>
-
-        <ImgBox label="Employer dashboard" hexColor="#fb923c" height={360} />
+        <TwoColRow label="Employer Dashboard" isLast>
+          <p style={prose} className="mb-8">
+            Alongside the employee product, I designed an employer dashboard for HR professionals — following the same research and iteration process. By December 2022, the MVP had reached a point of maturity that set the foundation for what Pasito would become after YCombinator.
+          </p>
+          <ImgBox label="Employer dashboard" hexColor="#fb923c" height={360} />
+        </TwoColRow>
       </Section>
 
       {/* ══ 2022 UPDATE ══════════════════════════════════════════════════ */}
@@ -356,14 +385,15 @@ export default function MvpPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          After YCombinator in 2022, Pasito shifted from a tax-focused tool to a broader HR communications platform — integrating payroll, financial, and claims data to optimize employee benefits coverage and utilization. The mission evolved, and so did the design. I redesigned the product to match the new direction: updated visual language, restructured information architecture, and new hi-fi mockups for the expanded product scope.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <ImgBox label="Updated hi-fi — screen 1" hexColor="#2dd4bf" height={280} />
-          <ImgBox label="Updated hi-fi — screen 2" hexColor="#2dd4bf" height={280} />
-        </div>
+        <TwoColRow label="2022 Update" isLast>
+          <p style={prose} className="mb-8">
+            After YCombinator in 2022, Pasito shifted from a tax-focused tool to a broader HR communications platform — integrating payroll, financial, and claims data to optimize employee benefits coverage and utilization. The mission evolved, and so did the design. I redesigned the product to match the new direction: updated visual language, restructured information architecture, and new hi-fi mockups for the expanded product scope.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ImgBox label="Updated hi-fi — screen 1" hexColor="#2dd4bf" height={280} />
+            <ImgBox label="Updated hi-fi — screen 2" hexColor="#2dd4bf" height={280} />
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
@@ -372,15 +402,7 @@ export default function MvpPage() {
         className="px-8 md:px-12"
         style={{ paddingTop: 64, paddingBottom: 56, marginTop: 64, borderTop: "1px solid #efefec" }}
       >
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 18,
-            color: "#0d0d0d",
-            lineHeight: 1.85,
-          }}
-        >
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.85 }}>
           Taking a product from sketches to a validated prototype — with real users, real feedback, and a real pivot in the business along the way — taught me that good design at a startup means staying close to the problem even as it changes. The MVP I shipped wasn&apos;t the final product. It was the proof that there was one worth building.
         </p>
       </motion.div>

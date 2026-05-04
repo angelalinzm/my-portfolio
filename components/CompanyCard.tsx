@@ -18,6 +18,7 @@ interface Project {
   route: string;
   inProgress?: boolean;
   size?: "large" | "small";
+  imageSrc?: string;
 }
 
 interface CompanyCardProps {
@@ -143,6 +144,7 @@ export default function CompanyCard({
                 route={largeProject.route}
                 inProgress={largeProject.inProgress}
                 size="large"
+                imageSrc={largeProject.imageSrc}
               />
             </div>
           )}
@@ -157,6 +159,7 @@ export default function CompanyCard({
                   route={p.route}
                   inProgress={p.inProgress}
                   size="small"
+                  imageSrc={p.imageSrc}
                 />
               </div>
             ))}
@@ -173,6 +176,7 @@ export default function CompanyCard({
               route={largeProject.route}
               inProgress={largeProject.inProgress}
               size="large"
+              imageSrc={largeProject.imageSrc}
             />
           </div>
         )

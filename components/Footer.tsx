@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <Link
           href="/"
-          className="font-display text-xl italic font-bold text-brand-text"
+          className="font-display text-xl font-bold text-brand-text"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           al.

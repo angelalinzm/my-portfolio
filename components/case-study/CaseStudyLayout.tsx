@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -25,6 +26,7 @@ interface CaseStudyLayoutProps {
   headlineEmphasis?: string;
   subtitle: string;
   heroImageLabel?: string;
+  heroImageSrc?: string;
   /** Absolutely-positioned shape layer behind the hero */
   heroShapes?: React.ReactNode;
   meta: Meta;
@@ -43,7 +45,7 @@ function renderHeadline(
   return (
     <>
       {parts[0]}
-      <em style={{ color, fontStyle: "italic" }}>{emphasis}</em>
+      <em style={{ color, fontStyle: "normal" }}>{emphasis}</em>
       {parts[1]}
     </>
   );
@@ -57,6 +59,7 @@ export default function CaseStudyLayout({
   headlineEmphasis,
   subtitle,
   heroImageLabel = "Add your Figma screen here",
+  heroImageSrc,
   heroShapes,
   meta,
   prev,
@@ -153,7 +156,7 @@ export default function CaseStudyLayout({
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 300,
-                  fontSize: 15,
+                  fontSize: 18,
                   color: "#888",
                   lineHeight: 1.65,
                   maxWidth: 440,
@@ -163,24 +166,33 @@ export default function CaseStudyLayout({
               </motion.p>
             </div>
 
-            {/* Right: Hero image placeholder */}
+            {/* Right: Hero image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, ease, delay: 0.25 }}
-              className="flex items-center justify-center w-full"
-              style={{
-                background: "#f0f9ff",
-                borderRadius: 20,
-                height: 260,
-              }}
+              className="relative w-full overflow-hidden"
+              style={{ borderRadius: 20, height: 260, background: "#f0f9ff" }}
             >
-              <p
-                className="text-xs uppercase tracking-widest text-center px-8"
-                style={{ color: "#bbb", letterSpacing: "2px", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                {heroImageLabel}
-              </p>
+              {heroImageSrc ? (
+                <Image
+                  src={heroImageSrc}
+                  alt={heroImageLabel}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              ) : (
+                <div className="flex items-center justify-center w-full h-full">
+                  <p
+                    className="text-xs uppercase tracking-widest text-center px-8"
+                    style={{ color: "#bbb", letterSpacing: "2px", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {heroImageLabel}
+                  </p>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>

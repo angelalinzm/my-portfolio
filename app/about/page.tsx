@@ -36,7 +36,7 @@ export default function AboutPage() {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             About{" "}
-            <em className="italic" style={{ color: "#22c55e" }}>me</em>
+            <em style={{ color: "#22c55e", fontStyle: "normal" }}>me</em>
           </h1>
         </motion.div>
 
@@ -74,7 +74,7 @@ export default function AboutPage() {
               Hi, I&apos;m Angela Lin.
             </h2>
             <div
-              className="space-y-4 text-brand-text/65 leading-relaxed"
+              className="space-y-4 text-lg text-brand-text/65 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
             >
               <p>
@@ -129,7 +129,7 @@ export default function AboutPage() {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Skills &{" "}
-            <em className="italic" style={{ color: "#22c55e" }}>expertise</em>
+            <em style={{ color: "#22c55e", fontStyle: "normal" }}>expertise</em>
           </h2>
           <div className="flex flex-wrap gap-2.5">
             {skills.map((skill) => (

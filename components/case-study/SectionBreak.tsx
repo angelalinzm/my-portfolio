@@ -37,7 +37,7 @@ export default function SectionBreak({
 
   return (
     <div
-      className="w-full text-center"
+      className="w-full text-left"
       style={{ padding: "80px 48px", borderBottom: "1px solid #f8f8f8" }}
     >
       {/* Eyebrow */}
@@ -64,14 +64,14 @@ export default function SectionBreak({
         }}
       >
         {parts[0]}
-        <em style={{ color: emphColor, fontStyle: "italic" }}>{emphasisWord}</em>
+        <em style={{ color: emphColor, fontStyle: "normal" }}>{emphasisWord}</em>
         {parts[1]}
       </h2>
 
       {/* Optional subtitle */}
       {subtitle && (
         <p
-          className="mt-3 italic text-sm"
+          className="mt-3 text-sm"
           style={{ color: "#bbb", fontFamily: "'DM Sans', sans-serif" }}
         >
           {subtitle}
@@ -79,7 +79,7 @@ export default function SectionBreak({
       )}
 
       {/* Green dot + spinning shape */}
-      <div className="flex items-center justify-center gap-2 mt-7">
+      <div className="flex items-center justify-start gap-2 mt-7">
         <div
           className="rounded-full"
           style={{ width: 7, height: 7, background: dotColor, flexShrink: 0 }}

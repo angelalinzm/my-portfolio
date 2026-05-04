@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import CaseStudyLayout from "@/components/case-study/CaseStudyLayout";
 import SectionBreak from "@/components/case-study/SectionBreak";
 import DotLabel from "@/components/case-study/DotLabel";
-import CsImagePlaceholder from "@/components/case-study/CsImagePlaceholder";
 import PullQuote from "@/components/case-study/PullQuote";
 import BrightCard from "@/components/case-study/BrightCard";
 
@@ -106,11 +105,38 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
+// ─── Two-column row ─────────────────────────────────────────────────────────
+function TwoColRow({
+  label,
+  children,
+  isLast = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-[220px_1fr]"
+      style={{
+        gap: "40px 72px",
+        padding: "40px 0",
+        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+      }}
+    >
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
+        {label}
+      </p>
+      <div>{children}</div>
+    </div>
+  );
+}
+
 // ─── Prose ─────────────────────────────────────────────────────────────────
 const prose: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
   fontWeight: 300,
-  fontSize: 16,
+  fontSize: 18,
   color: "#0d0d0d",
   lineHeight: 1.8,
 };
@@ -135,6 +161,7 @@ export default function WebOnboardingPage() {
       headlineEmphasis="want"
       subtitle="Multi-month project spanning illustration, responsive design, and real lessons in designing within business constraints."
       heroImageLabel="Web Onboarding — Final Mockup"
+      heroImageSrc="/images/well/well-onboarding.png"
       heroShapes={<HeroShapes />}
       meta={{
         role: "UX/UI Designer · Illustrator",
@@ -147,10 +174,12 @@ export default function WebOnboardingPage() {
     >
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
-      <Section>
-        <p style={prose}>
-          This was the first project I worked on at Well — and it set the tone for how I&apos;d approach the rest of my co-op. Product managers wanted a web-based sign-up flow to increase engagement and reach users who hadn&apos;t yet downloaded the app. What started as &lsquo;turn these wireframes into hi-fi designs&rsquo; quickly became a multi-month project spanning illustration, responsive design, and some real lessons in designing within business constraints.
-        </p>
+      <Section className="!pt-16">
+        <TwoColRow label="Overview" isLast>
+          <p style={prose}>
+            This was the first project I worked on at Well — and it set the tone for how I&apos;d approach the rest of my co-op. Product managers wanted a web-based sign-up flow to increase engagement and reach users who hadn&apos;t yet downloaded the app. What started as &lsquo;turn these wireframes into hi-fi designs&rsquo; quickly became a multi-month project spanning illustration, responsive design, and some real lessons in designing within business constraints.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ THE PROBLEM ══════════════════════════════════════════════════ */}
@@ -166,9 +195,11 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <p style={prose}>
-          Product managers at Well wanted a web-based path to sign-up — a way to reach users who hadn&apos;t yet downloaded the app and convert them without requiring an install first.
-        </p>
+        <TwoColRow label="The Problem" isLast>
+          <p style={prose}>
+            Product managers at Well wanted a web-based path to sign-up — a way to reach users who hadn&apos;t yet downloaded the app and convert them without requiring an install first.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ THE START ════════════════════════════════════════════════════ */}
@@ -184,30 +215,30 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          The PMs came in with lo-fi wireframes and a defined flow. My job was to translate those into production-ready hi-fi designs and work directly with developers on what was technically feasible.
-        </p>
+        <TwoColRow label="The Brief">
+          <p style={prose}>
+            The PMs came in with lo-fi wireframes and a defined flow. My job was to translate those into production-ready hi-fi designs and work directly with developers on what was technically feasible.
+          </p>
+        </TwoColRow>
 
-        <DotLabel color="#0284c7">Requirements</DotLabel>
-
-        <BrightCard
-          color="blue"
-          tag="THE BRIEF"
-          title="What I was asked to do"
-          titleEmphasis="do"
-          shape="hexagon"
-          spinDir="spinr"
-          spinDuration={20}
-        >
-          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 300, color: "rgba(0,0,0,0.65)", lineHeight: 1.75 }}>
-            <p>— Translate lo-fi PM wireframes into hi-fi designs</p>
-            <p>— Mirror the mobile app sign-up process with minimal steps</p>
-            <p>— Create an original illustration that embodies Well&apos;s mission</p>
-            <p className="mt-3">
-              That third requirement — the illustration — turned out to be the most challenging and most rewarding part of the entire project.
-            </p>
+        <TwoColRow label="Requirements" isLast>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {[
+              { number: "01", text: "Translate lo-fi PM wireframes into hi-fi designs" },
+              { number: "02", text: "Mirror the mobile app sign-up process with minimal steps" },
+              { number: "03", text: "Create an original illustration that embodies Well's mission" },
+            ].map(({ number, text }) => (
+              <div key={number} className="flex items-start gap-4" style={{ background: "#f7f7f5", borderRadius: 14, padding: "18px 20px" }}>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
+                  {number}
+                </span>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 400, color: "#0d0d0d", lineHeight: 1.65 }}>
+                  {text}
+                </p>
+              </div>
+            ))}
           </div>
-        </BrightCard>
+        </TwoColRow>
       </Section>
 
       {/* ══ RESEARCH ═════════════════════════════════════════════════════ */}
@@ -223,19 +254,14 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          This was my first time designing for responsive breakpoints. Rather than just figuring it out as I went, I spent time doing extensive research on breakpoint systems and responsive design principles — then documented everything I learned in Confluence for the broader design team&apos;s library.
-        </p>
-
-        <PullQuote
-          quote="Learning in public — sharing what you figure out rather than keeping it to yourself — is one of the most valuable things a junior designer can do."
-          source="— Personal reflection, Well co-op"
-          accentColor="#0284c7"
-        />
-
-        <p style={prose} className="mt-6">
-          That documentation became a reference resource for the team. It was one of the first times I understood that the work you do to help yourself learn has value beyond you.
-        </p>
+        <TwoColRow label="Responsive Design" isLast>
+          <p style={prose} className="mb-5">
+            This was my first time designing for responsive breakpoints. Rather than just figuring it out as I went, I spent time doing extensive research on breakpoint systems and responsive design principles — then documented everything I learned in Confluence for the broader design team&apos;s library.
+          </p>
+          <p style={prose}>
+            That documentation became a reference resource for the team. It was one of the first times I understood that the work you do to help yourself learn has value beyond you.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ DESIGN ═══════════════════════════════════════════════════════ */}
@@ -251,47 +277,49 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          The brief asked for something that &lsquo;embodies Well&apos;s mission.&rsquo; That&apos;s an open-ended prompt — which meant I had a real creative opportunity, and real pressure to get it right.
-        </p>
-
-        <DotLabel color="#0284c7">The Illustration</DotLabel>
-
-        <p style={prose} className="mb-8">
-          I spent a full month creating, testing, and iterating on the illustration before my team and I were satisfied. The final design tells the story of a user moving forward through their health journey — stepping through a series of panels, each representing a different dimension of wellbeing: sleep, nutrition, habits, rewards. The figure moves through them with momentum, forward-facing, progressing toward their goals.
-        </p>
-
-        <BrightCard
-          color="green"
-          tag="DESIGN INTENT"
-          title="Well isn't a destination. It's a journey."
-          titleEmphasis="journey."
-          shape="diamond"
-          spinDir="spin"
-          spinDuration={18}
-          body="The metaphor was intentional. The illustration needed to feel active — not aspirational in a passive way. The figure doesn't arrive somewhere. They're always moving."
-        />
-
-        <div className="mt-10">
-          <DotLabel color="#0284c7">Illustration Iterations</DotLabel>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <CsImagePlaceholder label="Iteration 1" variant="tall" hexColor="#fb923c" />
-          <CsImagePlaceholder label="Iteration 2" variant="tall" hexColor="#4f46e5" />
-          <CsImagePlaceholder label="Iteration 3" variant="tall" hexColor="#f472b6" />
-          <CsImagePlaceholder label="Iteration 4" variant="tall" hexColor="#2dd4bf" />
-        </div>
-
-        <div className="mt-4" style={{ minHeight: 480, background: "#f7f7f5", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-          <div className="absolute" style={{ top: -12, right: -12, zIndex: 1 }}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style={{ animation: "cs-spin 9s linear infinite" }}>
-              <polygon points="25,14 19.5,23.5 8.5,23.5 3,14 8.5,4.5 19.5,4.5" stroke="#22c55e" strokeWidth="1.5" fill="none" />
-            </svg>
-          </div>
-          <p className="text-xs uppercase tracking-widest text-center px-8" style={{ color: "#bbb", letterSpacing: "1.5px", fontFamily: "'DM Sans', sans-serif" }}>
-            Final illustration — Desktop 22
+        <TwoColRow label="The Illustration">
+          <p style={prose} className="mb-8">
+            The brief asked for something that &lsquo;embodies Well&apos;s mission.&rsquo; That&apos;s an open-ended prompt — which meant I had a real creative opportunity, and real pressure to get it right.
           </p>
+          <p style={prose} className="mb-8">
+            I spent a full month creating, testing, and iterating on the illustration before my team and I were satisfied. The final design tells the story of a user moving forward through their health journey — stepping through a series of panels, each representing a different dimension of wellbeing: sleep, nutrition, habits, rewards. The figure moves through them with momentum, forward-facing, progressing toward their goals.
+          </p>
+          <BrightCard
+            color="green"
+            tag="DESIGN INTENT"
+            title="Well isn't a destination. It's a journey."
+            titleEmphasis="journey."
+            shape="diamond"
+            spinDir="spin"
+            spinDuration={18}
+            body="The metaphor was intentional. The illustration needed to feel active — not aspirational in a passive way. The figure doesn't arrive somewhere. They're always moving."
+          />
+        </TwoColRow>
+
+        {/* Full-width: Illustration iterations */}
+        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+          <p className="mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
+            Illustration Iterations
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {["iteration-1", "iteration-2", "iteration-3", "iteration-4"].map((name) => (
+              <div key={name} className="overflow-hidden" style={{ borderRadius: 16, border: "1px solid #e8e8e5" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/images/well/${name}.png`} alt={name.replace("-", " ")} style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Full-width: Final illustration */}
+        <div style={{ padding: "40px 0" }}>
+          <p className="mb-3" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
+            Final illustration
+          </p>
+          <div className="overflow-hidden" style={{ borderRadius: 16, border: "1px solid #e8e8e5" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/well/final.png" alt="Final illustration" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
         </div>
       </Section>
 
@@ -308,26 +336,27 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          Over two months I was in constant conversation with PMs, developers, and the design team about what we could actually build. The biggest tension point: how do users get from the web onboarding to the app?
-        </p>
+        <TwoColRow label="Context">
+          <p style={prose}>
+            Over two months I was in constant conversation with PMs, developers, and the design team about what we could actually build. The biggest tension point: how do users get from the web onboarding to the app?
+          </p>
+        </TwoColRow>
 
-        <DotLabel color="#0284c7">The Tension</DotLabel>
-
-        <p style={prose} className="mb-8">
-          The ideal solution would have been a mobile deep link — tap a button, open the app. But that technology hadn&apos;t been developed yet, and there were security constraints that ruled it out. I explored a few alternatives before landing on the QR code approach the PMs had proposed. It wasn&apos;t my first choice aesthetically, but it was the right call given the constraints — it kept users from getting stuck on web without requiring infrastructure we didn&apos;t have.
-        </p>
-
-        <BrightCard
-          color="amber"
-          tag="DESIGN PRINCIPLE"
-          title="Sometimes good design is the honest solution."
-          titleEmphasis="honest"
-          shape="triangle"
-          spinDir="spinr"
-          spinDuration={16}
-          body="Not the most elegant one — the most truthful one. The QR code told users exactly what the product could do right now. That's not a compromise. That's a decision."
-        />
+        <TwoColRow label="The Tension" isLast>
+          <p style={prose} className="mb-8">
+            The ideal solution would have been a mobile deep link — tap a button, open the app. But that technology hadn&apos;t been developed yet, and there were security constraints that ruled it out. I explored a few alternatives before landing on the QR code approach the PMs had proposed. It wasn&apos;t my first choice aesthetically, but it was the right call given the constraints — it kept users from getting stuck on web without requiring infrastructure we didn&apos;t have.
+          </p>
+          <BrightCard
+            color="amber"
+            tag="DESIGN PRINCIPLE"
+            title="Sometimes good design is the honest solution."
+            titleEmphasis="honest"
+            shape="triangle"
+            spinDir="spinr"
+            spinDuration={16}
+            body="Not the most elegant one — the most truthful one. The QR code told users exactly what the product could do right now. That's not a compromise. That's a decision."
+          />
+        </TwoColRow>
       </Section>
 
       {/* ══ DELIVERABLES ═════════════════════════════════════════════════ */}
@@ -343,28 +372,38 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          I delivered fully responsive designs across three breakpoints — desktop, tablet (iPad Pro 11&rdquo;), and mobile (iPhone X) — along with the final illustration.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            { label: "Desktop screens", color: "#0284c7" },
-            { label: "Tablet screens",  color: "#4f46e5" },
-            { label: "Mobile screens",  color: "#f472b6" },
-          ].map(({ label, color }) => (
-            <div key={label} style={{ minHeight: 400, background: "#f7f7f5", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-              <div className="absolute" style={{ top: -12, right: -12, zIndex: 1 }}>
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style={{ animation: "cs-spin 9s linear infinite" }}>
-                  <polygon points="25,14 19.5,23.5 8.5,23.5 3,14 8.5,4.5 19.5,4.5" stroke={color} strokeWidth="1.5" fill="none" />
-                </svg>
+        <TwoColRow label="Deliverables" isLast>
+          <p style={prose} className="mb-8">
+            I delivered fully responsive designs across three breakpoints — desktop, tablet (iPad Pro 11&rdquo;), and mobile (iPhone X) — along with the final illustration.
+          </p>
+          <div className="flex gap-6 items-start">
+            <div className="flex flex-col gap-2" style={{ flex: 1.4 }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d", marginBottom: 4 }}>Desktop</p>
+              <div className="flex flex-col gap-3">
+                {["code", "agreement", "qr-code"].map((name) => (
+                  <div key={name} style={{ borderRadius: 16, border: "1px solid #e8e8e5", overflow: "hidden" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/images/well/${name}.png`} alt={name} style={{ width: "100%", height: "auto", display: "block" }} />
+                  </div>
+                ))}
               </div>
-              <p className="text-xs uppercase tracking-widest text-center px-8" style={{ color: "#bbb", letterSpacing: "1.5px", fontFamily: "'DM Sans', sans-serif" }}>
-                {label}
-              </p>
             </div>
-          ))}
-        </div>
+            <div className="flex flex-col gap-2" style={{ flex: 1 }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d", marginBottom: 4 }}>iPad</p>
+              <div style={{ borderRadius: 16, border: "1px solid #e8e8e5", overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/well/ipad.png" alt="Tablet screens" style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2" style={{ flex: 0.7 }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d", marginBottom: 4 }}>Mobile</p>
+              <div style={{ borderRadius: 16, border: "1px solid #e8e8e5", overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/well/mobile.png" alt="Mobile screens" style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+            </div>
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
@@ -373,15 +412,7 @@ export default function WebOnboardingPage() {
         className="px-8 md:px-12"
         style={{ paddingTop: 64, paddingBottom: 56 }}
       >
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 18,
-            color: "#0d0d0d",
-            lineHeight: 1.8,
-          }}
-        >
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.8 }}>
           The web onboarding shipped and was received positively. Looking back, the constraint that felt most frustrating at the time — the QR code — turned out to be the most clarifying design decision of the project. It forced me to ask: what does honesty look like in a product experience? The answer was simpler than I expected.
         </p>
       </motion.div>

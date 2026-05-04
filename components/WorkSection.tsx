@@ -71,7 +71,7 @@ export default function WorkSection({ id, standalonePage = false }: WorkSectionP
             style={{ fontFamily: "'Playfair Display', serif", color: "#0d0d0d" }}
           >
             Selected{" "}
-            <em className="italic" style={{ color: "#22c55e" }}>
+            <em style={{ color: "#22c55e", fontStyle: "normal" }}>
               work
             </em>
           </h2>

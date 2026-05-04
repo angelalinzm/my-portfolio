@@ -38,7 +38,7 @@ export default function Navbar() {
       {/* Logo */}
       <Link
         href="/"
-        className="font-display text-2xl italic font-bold text-brand-text select-none"
+        className="font-display text-2xl font-bold text-brand-text select-none"
         style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "-0.01em" }}
       >
         al.

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import CaseStudyLayout from "@/components/case-study/CaseStudyLayout";
 import SectionBreak from "@/components/case-study/SectionBreak";
 import DotLabel from "@/components/case-study/DotLabel";
@@ -104,6 +105,33 @@ function Section({ children, className = "" }: { children: React.ReactNode; clas
   );
 }
 
+// ─── Two-column row ─────────────────────────────────────────────────────────
+function TwoColRow({
+  label,
+  children,
+  isLast = false,
+}: {
+  label: string;
+  children: React.ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <div
+      className="grid grid-cols-1 md:grid-cols-[220px_1fr]"
+      style={{
+        gap: "40px 72px",
+        padding: "40px 0",
+        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+      }}
+    >
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
+        {label}
+      </p>
+      <div>{children}</div>
+    </div>
+  );
+}
+
 // ─── Prose ─────────────────────────────────────────────────────────────────
 const prose: React.CSSProperties = {
   fontFamily: "'DM Sans', sans-serif",
@@ -145,6 +173,77 @@ function ImgBox({ label, hexColor, height }: { label: string; hexColor: string; 
   );
 }
 
+// ─── Auto-advancing step image viewer ──────────────────────────────────────
+const STEPS = ["step-1", "step-2", "step-3", "step-4", "step-5", "step-6"];
+
+function AutoStepper() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % STEPS.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="w-full">
+      {/* Image */}
+      <div className="relative w-full overflow-hidden" style={{ borderRadius: 16 }}>
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={current}
+            src={`/images/copley/${STEPS[current]}.png`}
+            alt={`Step ${current + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </AnimatePresence>
+      </div>
+
+      {/* Dot indicators + step label */}
+      <div className="flex items-center justify-between mt-4">
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 400, color: "#aaa" }}>
+          Step {current + 1} of {STEPS.length}
+        </p>
+        <div className="flex items-center gap-2">
+          {STEPS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              style={{
+                width: i === current ? 20 : 6,
+                height: 6,
+                borderRadius: 100,
+                background: i === current ? "#4f46e5" : "#ddd",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+              aria-label={`Go to step ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Progress bar */}
+      <div style={{ height: 2, background: "#f0f0ed", borderRadius: 2, marginTop: 10 }}>
+        <motion.div
+          key={current}
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 5, ease: "linear" }}
+          style={{ height: "100%", background: "#4f46e5", borderRadius: 2 }}
+        />
+      </div>
+    </div>
+  );
+}
+
 // ─── Diamond separator ──────────────────────────────────────────────────────
 function Diamond() {
   return (
@@ -165,6 +264,7 @@ export default function AiBriefPage() {
       headlineEmphasis="designs itself."
       subtitle="Three generations of a brief flow. And the insight that users weren't filling out a form — they were trying to have a conversation."
       heroImageLabel="Brief Wizard — Gen 3 agent"
+      heroImageSrc="/images/copley/agent.png"
       heroShapes={<HeroShapes />}
       meta={{
         role: "Product Designer",
@@ -178,9 +278,11 @@ export default function AiBriefPage() {
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
       <Section className="!pt-16">
-        <p style={prose}>
-          Copley is an AI-native marketing platform that helps brands create, test, and optimize ad campaigns at scale. As the sole product designer, I owned the end-to-end design of the Brief Wizard — the core flow where clients translate creative intent into AI-generated ad campaigns. Over the course of a year, I took it through three generations, moving from a rigid structured form to a fully conversational AI agent.
-        </p>
+        <TwoColRow label="Overview" isLast>
+          <p style={prose}>
+            Copley is an AI-native marketing platform that helps brands create, test, and optimize ad campaigns at scale. As the sole product designer, I owned the end-to-end design of the Brief Wizard — the core flow where clients translate creative intent into AI-generated ad campaigns. Over the course of a year, I took it through three generations, moving from a rigid structured form to a fully conversational AI agent.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ THE PROBLEM ══════════════════════════════════════════════════ */}
@@ -196,9 +298,11 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <p style={prose}>
-          Users weren&apos;t navigating the wizard the way it was designed. They were skipping fields, going back and forth, and — most tellingly — treating the one free-text field as a chat box. They&apos;d type, generate, review, retype. They had turned a brief into a conversation. My job was to make the product catch up.
-        </p>
+        <TwoColRow label="The Problem" isLast>
+          <p style={prose}>
+            Users weren&apos;t navigating the wizard the way it was designed. They were skipping fields, going back and forth, and — most tellingly — treating the one free-text field as a chat box. They&apos;d type, generate, review, retype. They had turned a brief into a conversation. My job was to make the product catch up.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ GEN 1 ════════════════════════════════════════════════════════ */}
@@ -214,13 +318,15 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-8">
-          The original brief was a single long-form page — source content, a creativity slider (Basic → Wild), output settings, variant count. Everything visible at once. The AI worked entirely in the background; users made selections, hit generate, and received output. No freeform input. No back-and-forth. No indication the AI had interpreted anything. It treated ad creation like a form. Users treated it like a fight.
-        </p>
-
-        <DotLabel color="#0284c7">Original Brief Form</DotLabel>
-
-        <ImgBox label="Gen 1 — single page brief form" hexColor="#fb923c" height={320} />
+        <TwoColRow label="Gen 1 — Brief Form" isLast>
+          <p style={prose} className="mb-8">
+            The original brief was a single long-form page — source content, a creativity slider (Basic → Wild), output settings, variant count. Everything visible at once. The AI worked entirely in the background; users made selections, hit generate, and received output. No freeform input. No back-and-forth. No indication the AI had interpreted anything. It treated ad creation like a form. Users treated it like a fight.
+          </p>
+          <div className="overflow-hidden" style={{ borderRadius: 16 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/copley/gen-1.png" alt="Gen 1 brief form" style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ GEN 2 ════════════════════════════════════════════════════════ */}
@@ -236,30 +342,33 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-5">
-          The second generation broke the single page into an 8-step wizard: Ad Type → Ad Source Content → Ad Source → Inspiration → Traits → Creative Direction → Variants → Review. The most significant addition was Step 6: a freeform Ad Concept field where users could describe the brief in their own words, paired with their Brand Kit.
-        </p>
+        <TwoColRow label="Gen 2 — 6-Step Wizard">
+          <p style={prose} className="mb-5">
+            The second generation broke the single page into a 6-step wizard: Ad Type → Ad Source Content → Ad Source → Inspiration → Traits → Creative Direction → Variants → Review. The most significant addition was Step 5: a freeform Ad Concept field where users could describe the brief in their own words, paired with their Brand Kit.
+          </p>
+          <p style={prose}>
+            But users immediately routed to that one field — rushing through steps 1–5 to get there, then iterating in the prompt box, completely bypassing the structured inputs. The wizard was 6 steps. The real interaction was happening in one box. When a system provides both structured and free-text input, users gravitate toward whichever feels most expressive. The structured fields became overhead.
+          </p>
+        </TwoColRow>
 
-        <p style={prose} className="mb-8">
-          But users immediately routed to that one field — rushing through steps 1–5 to get there, then iterating in the prompt box, completely bypassing the structured inputs. The wizard was 8 steps. The real interaction was happening in one box. When a system provides both structured and free-text input, users gravitate toward whichever feels most expressive. The structured fields became overhead.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <ImgBox label="Gen 2 — 8-step wizard" hexColor="#22c55e" height={260} />
-          <ImgBox label="Step 6 — Ad concept prompt field" hexColor="#22c55e" height={260} />
+        {/* Full-width: Gen 2 step-by-step auto stepper */}
+        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+          <AutoStepper />
         </div>
 
-        <BrightCard
-          color="green"
-          bg="#f0fdf4"
-          tag="KEY INSIGHT"
-          title="Users weren't filling out a brief. They were prompting."
-          titleEmphasis="prompting."
-          shape="hexagon"
-          spinDir="spin"
-          spinDuration={18}
-          body="Watching users in sessions, I could see the pattern without anyone needing to name it. The creative direction box had become the product. The rest was noise."
-        />
+        <TwoColRow label="Key Insight" isLast>
+          <BrightCard
+            color="green"
+            bg="#f0fdf4"
+            tag="KEY INSIGHT"
+            title="Users weren't filling out a brief. They were prompting."
+            titleEmphasis="prompting."
+            shape="hexagon"
+            spinDir="spin"
+            spinDuration={18}
+            body="Watching users in sessions, I could see the pattern without anyone needing to name it. The creative direction box had become the product. The rest was noise."
+          />
+        </TwoColRow>
       </Section>
 
       {/* ══ GEN 3 ════════════════════════════════════════════════════════ */}
@@ -275,67 +384,53 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <p style={prose} className="mb-5">
-          The third generation inverted the mental model entirely. Instead of a form that ends in AI, it&apos;s a conversation that begins with AI. A chat-based agent moves through the brief collaboratively — mixing quick structured inputs (image source, brand kit, traits) with open prompts (inspiration, concept direction). Then, crucially, the agent proposes the creative direction itself. It surfaces a full draft brief based on everything collected and asks: &ldquo;Are there any changes you&apos;d like to make, or would you like to use this creative direction?&rdquo;
-        </p>
-
-        <p style={prose} className="mb-8">
-          The user can edit, redirect, or simply say &ldquo;I approve.&rdquo; The cognitive load shifts dramatically — instead of starting from a blank box, the user reacts to a proposal. Curation is faster, lower-stakes, and more collaborative than creation from scratch.
-        </p>
-
-        <DotLabel color="#0284c7">Gen 3 — Brief Wizard Flow</DotLabel>
-
-        {/* TODO: Replace with <BriefWizardDemo /> component once real images are ready */}
-        <div
-          className="mb-8"
-          style={{
-            minHeight: 520,
-            background: "#f0f0ed",
-            border: "1.5px dashed #d0d0cc",
-            borderRadius: 16,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 12,
-          }}
-        >
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <circle cx="20" cy="20" r="18" stroke="#bbb" strokeWidth="1.5" />
-            <polygon points="16,13 30,20 16,27" stroke="#bbb" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
-          </svg>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#bbb", margin: 0 }}>
-            Brief Wizard — Gen 3 flow
+        <TwoColRow label="Gen 3 — Agent">
+          <p style={prose} className="mb-5">
+            The third generation inverted the mental model entirely. Instead of a form that ends in AI, it&apos;s a conversation that begins with AI. A chat-based agent moves through the brief collaboratively — mixing quick structured inputs (image source, brand kit, traits) with open prompts (inspiration, concept direction). Then, crucially, the agent proposes the creative direction itself. It surfaces a full draft brief based on everything collected and asks: &ldquo;Are there any changes you&apos;d like to make, or would you like to use this creative direction?&rdquo;
           </p>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#ccc", margin: 0 }}>
-            Interactive demo coming soon
+          <p style={prose}>
+            The user can edit, redirect, or simply say &ldquo;I approve.&rdquo; The cognitive load shifts dramatically — instead of starting from a blank box, the user reacts to a proposal. Curation is faster, lower-stakes, and more collaborative than creation from scratch.
           </p>
-        </div>
+        </TwoColRow>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <BrightCard
-            color="violet"
-            bg="#f5f3ff"
-            tag="DESIGN DECISION"
-            title="Why conversational over wizard?"
-            titleEmphasis="wizard?"
-            shape="diamond"
-            spinDir="spin"
-            spinDuration={20}
-            body="Wizards enforce sequence. Conversations allow the natural non-linearity of creative thinking. A marketer briefing a designer doesn't follow a fixed order — they lead with feeling, then references, then constraints. The agent accommodates this."
-          />
-          <BrightCard
-            color="violet"
-            bg="#f5f3ff"
-            tag="DESIGN DECISION"
-            title="Why have the AI propose the brief?"
-            titleEmphasis="brief?"
-            shape="star"
-            spinDir="spinr"
-            spinDuration={16}
-            body="Users facing blank boxes get stuck. When the AI proposes and users react, the dynamic shifts from creation to curation. The model infers context from behavior — images selected, inspiration provided — not just what was typed."
+        {/* Full-width: Gen 3 agent video */}
+        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+          <video
+            src="/images/copley/brief-agent.mov"
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }}
           />
         </div>
+
+        <TwoColRow label="Design Decisions" isLast>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <BrightCard
+              color="violet"
+              bg="#f5f3ff"
+              tag="DESIGN DECISION"
+              title="Why conversational over wizard?"
+              titleEmphasis="wizard?"
+              shape="diamond"
+              spinDir="spin"
+              spinDuration={20}
+              body="Wizards enforce sequence. Conversations allow the natural non-linearity of creative thinking. A marketer briefing a designer doesn't follow a fixed order — they lead with feeling, then references, then constraints. The agent accommodates this."
+            />
+            <BrightCard
+              color="violet"
+              bg="#f5f3ff"
+              tag="DESIGN DECISION"
+              title="Why have the AI propose the brief?"
+              titleEmphasis="brief?"
+              shape="star"
+              spinDir="spinr"
+              spinDuration={16}
+              body="Users facing blank boxes get stuck. When the AI proposes and users react, the dynamic shifts from creation to curation. The model infers context from behavior — images selected, inspiration provided — not just what was typed."
+            />
+          </div>
+        </TwoColRow>
       </Section>
 
       {/* ══ OUTCOME ══════════════════════════════════════════════════════ */}
@@ -351,9 +446,11 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <p style={prose}>
-          The Gen 3 conversational agent was presented internally and demoed to select clients, who described the experience as briefing a creative collaborator rather than operating a tool. The work contributed directly to Copley&apos;s evolving identity as an AI-native marketing agent — a direction the company formalized publicly in early 2026 with the launch of its always-on performance marketing platform.
-        </p>
+        <TwoColRow label="Outcome" isLast>
+          <p style={prose}>
+            The Gen 3 conversational agent was presented internally and demoed to select clients, who described the experience as briefing a creative collaborator rather than operating a tool. The work contributed directly to Copley&apos;s evolving identity as an AI-native marketing agent — a direction the company formalized publicly in early 2026 with the launch of its always-on performance marketing platform.
+          </p>
+        </TwoColRow>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
@@ -362,15 +459,7 @@ export default function AiBriefPage() {
         className="px-8 md:px-12"
         style={{ paddingTop: 64, paddingBottom: 56, marginTop: 64, borderTop: "1px solid #efefec" }}
       >
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 18,
-            color: "#0d0d0d",
-            lineHeight: 1.85,
-          }}
-        >
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.85 }}>
           Taking a brief flow through three generations taught me that the best AI interfaces don&apos;t ask users to adapt to the machine. They meet users where creative thinking already happens — in conversation, in reaction, in the back-and-forth of refining an idea. The product didn&apos;t just get better. The model of what it was changed entirely.
         </p>
       </motion.div>
