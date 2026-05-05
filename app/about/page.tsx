@@ -11,35 +11,20 @@ const skills = [
   "Figma",
   "Information Architecture",
   "Design Systems",
-  "AI Product Design",
+  "Cursor",
   "Prototyping",
   "Brand Identity",
   "Usability Testing",
   "UX Strategy",
-  "Data-informed Design",
+  "Claude Code",
   "Cross-functional Collaboration",
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-28 pb-24 px-6 md:px-10" style={{ background: "#f0f0ed" }}>
+    <div className="min-h-screen pt-40 pb-24 px-6 md:px-10" style={{ background: "#f0f0ed" }}>
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease }}
-          className="mb-16"
-        >
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            About{" "}
-            <em style={{ color: "#22c55e", fontStyle: "normal" }}>me</em>
-          </h1>
-        </motion.div>
-
         {/* Top section: photo + bio */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-20">
           <motion.div
@@ -48,10 +33,10 @@ export default function AboutPage() {
             transition={{ duration: 0.6, ease, delay: 0.1 }}
             className="md:col-span-2"
           >
-            <ImagePlaceholder
-              label="Add your photo here"
-              aspectRatio="3/4"
-              className="min-h-[300px]"
+            <img
+              src="/images/about.png"
+              alt="Angela Lin"
+              style={{ width: "100%", borderRadius: 20, display: "block" }}
             />
           </motion.div>
 
@@ -71,25 +56,24 @@ export default function AboutPage() {
               className="text-2xl md:text-3xl font-bold mb-5 leading-snug"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Hi, I&apos;m Angela Lin.
+              Hi there, I&apos;m Angela!
             </h2>
             <div
               className="space-y-4 text-lg text-brand-text/65 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
             >
               <p>
-                [Placeholder — fill in your bio here. Tell your story: where you
-                came from, what drives you, what kind of design problems you love
-                to solve.]
+                I'm a product designer who thinks the best design problems are the ones nobody has solved cleanly yet — especially in AI, where the technology moves faster than the mental models people have for it.
               </p>
               <p>
-                [Placeholder — share something about your background, education,
-                or how you got into design. Make it personal and genuine.]
+                I've spent the last few years as a sole designer inside startups, owning product design end-to-end — from the first whiteboard sketch to engineer handoff. My sweet spot is the messy middle: ambiguous problems, fast-moving technology, and the challenge of building clarity out of chaos.
               </p>
               <p>
-                [Placeholder — describe what you&apos;re looking for next or
-                what kind of teams you thrive in.]
+               I graduated from Northeastern University with a BS degree in Business Administration and Design major with a concentration in Entrepreneurial Startups and Experience Design.
               </p>
+              <p>
+               Outside of design, I'm an avid baker (deep in a sourdough era), a serial eater, and a traveler always planning the next trip. You'll also find me at the orchestra, painting, or building miniature houses with my hands. I'm all for living life in the moment, learning from every single experience, and of course, eating all the good food.
+               </p>
             </div>
 
             <div className="flex gap-4 mt-8">
@@ -129,7 +113,7 @@ export default function AboutPage() {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Skills &{" "}
-            <em style={{ color: "#22c55e", fontStyle: "normal" }}>expertise</em>
+            <em style={{ color: "#0284c7", fontStyle: "normal" }}>expertise</em>
           </h2>
           <div className="flex flex-wrap gap-2.5">
             {skills.map((skill) => (
@@ -165,9 +149,34 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-6">
             {[
-              { company: "Copley Advertising", role: "Sole Product Designer", dates: "2024–2026", desc: "[Placeholder — describe your role and impact here]" },
-              { company: "Well", role: "Product Designer", dates: "Jan–Jun 2022", desc: "[Placeholder — describe your role and impact here]" },
-              { company: "Pasito", role: "Lead Product Designer", dates: "Jun 2021–Present", desc: "[Placeholder — describe your role and impact here]" },
+              {
+                company: "Copley",
+                color: "#0284c7",
+                role: "Product Designer",
+                dates: "May 2024 – April 2026",
+                desc: "Sole designer at a 0-to-1 AI marketing platform. Designed end-to-end workflows for generating and launching ad content across platforms, translated complex AI capabilities into production-ready experiences, and built the information architecture and design system for scalable AI marketing workflows.",
+              },
+              {
+                company: "Smartleaf",
+                color: "#0284c7",
+                role: "Product Management & Design Co-op",
+                dates: "Jan – Jun 2023",
+                desc: "Devised research plans for key features in the Advisor Portal, managed and documented new feature development for handoff, and analyzed 1,000+ data points from 30+ financial clients to inform product decisions.",
+              },
+              {
+                company: "Pasito",
+                color: "#0284c7",
+                role: "UX/UI Designer",
+                dates: "Jun 2021 – Dec 2023",
+                desc: "Crafted the MVP prototype from concept to development, led the website redesign with developers, and directed extensive user testing including A/B tests for a Y Combinator-backed fintech startup.",
+              },
+              {
+                company: "Well",
+                color: "#0284c7",
+                role: "Product Design Co-op",
+                dates: "Jan – Jun 2022",
+                desc: "Researched and designed the first MVP for in-app challenges. Led design thinking workshops, ran 20+ user interviews, and delivered validated wireframes and user flows from an ambiguous brief in a single co-op term.",
+              },
             ].map((exp) => (
               <div
                 key={exp.company}
@@ -179,7 +188,7 @@ export default function AboutPage() {
                     <h3 className="font-semibold text-brand-text" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                       {exp.role}
                     </h3>
-                    <p className="text-sm text-brand-green font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    <p className="text-sm font-medium" style={{ fontFamily: "'DM Sans', sans-serif", color: exp.color }}>
                       {exp.company}
                     </p>
                   </div>
@@ -203,16 +212,17 @@ export default function AboutPage() {
           transition={{ duration: 0.6, ease }}
           className="flex justify-center"
         >
-          <button
+          <a
+            href="/images/Angela_Lin_Resume.pdf"
+            download
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-medium text-white transition-all hover:opacity-90 hover:scale-[1.02]"
             style={{ background: "#0d0d0d", fontFamily: "'DM Sans', sans-serif" }}
-            onClick={() => alert("Add your resume PDF link here")}
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M8 1v9M4 7l4 4 4-4M2 14h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Download resume
-          </button>
+          </a>
         </motion.div>
       </div>
     </div>

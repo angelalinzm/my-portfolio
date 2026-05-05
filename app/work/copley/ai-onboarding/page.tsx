@@ -33,7 +33,7 @@ function HeroShapes() {
         <svg width="110" height="115" viewBox="25 30 110 115" fill="none">
           <motion.path
             d={FLOWER_PATH}
-            stroke="#22c55e"
+            stroke="#16a34a"
             strokeWidth="2.5"
             strokeLinecap="round"
             fill="none"
@@ -90,7 +90,7 @@ function HeroShapes() {
       </motion.div>
 
       <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#fb923c", opacity: 0.5 }} />
-      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#22c55e", opacity: 0.45 }} />
+      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#4f46e5", opacity: 0.45 }} />
     </>
   );
@@ -206,6 +206,7 @@ export default function AiOnboardingPage() {
       headline="Designing AI onboarding for people who don't trust AI."
       headlineEmphasis="don't trust AI."
       subtitle="Copley is an AI-heavy marketing platform built for DTC brands. The challenge wasn't teaching users how to use the product — it was getting them to believe it was worth trusting in the first place."
+      heroImageSrc="/images/copley/onboarding.png"
       heroImageLabel="Onboarding flow + FTUE agent"
       heroShapes={<HeroShapes />}
       meta={{
@@ -214,8 +215,8 @@ export default function AiOnboardingPage() {
         team: "Angela Lin · Mike Torra (CTO) · David Henriquez (CEO)",
         tools: "Figma",
       }}
-      prev={{ label: "Design System & IA", href: "/work/copley/design-system" }}
-      next={{ label: "AI Brief to Campaign", href: "/work/copley/ai-brief" }}
+      prev={{ label: "Manual to Agentic Briefs", href: "/work/copley/ai-brief" }}
+      next={{ label: "In-App Challenges", href: "/work/well/in-app-challenges" }}
     >
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
@@ -240,9 +241,9 @@ export default function AiOnboardingPage() {
         emphasisWord="value."
         emphasisColor="#0284c7"
         shape="star"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={8}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -251,7 +252,7 @@ export default function AiOnboardingPage() {
             Before designing anything, I needed to understand what was actually holding AI-hesitant users back. Through user interviews and behavioral analysis, three distinct fears emerged — and they required completely different design responses.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8" style={{ alignItems: "stretch" }}>
-            <motion.div {...fadeUp(0)} style={{ height: "100%" }}>
+            <motion.div {...fadeUp(0)} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
               <BrightCard
                 color="blue"
                 bg="#eff6ff"
@@ -262,7 +263,7 @@ export default function AiOnboardingPage() {
                 body="Not a fear of the tool — a fear of becoming irrelevant. Marketers who've spent years developing creative instincts don't want a system that makes their judgment unnecessary."
               />
             </motion.div>
-            <motion.div {...fadeUp(0.06)} style={{ height: "100%" }}>
+            <motion.div {...fadeUp(0.06)} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
               <BrightCard
                 color="amber"
                 bg="#fff7ed"
@@ -273,7 +274,7 @@ export default function AiOnboardingPage() {
                 body="They've seen AI generate bad creative. They need to see the reasoning, not just the result — transparency about how a recommendation was reached matters as much as the recommendation itself."
               />
             </motion.div>
-            <motion.div {...fadeUp(0.12)} style={{ height: "100%" }}>
+            <motion.div {...fadeUp(0.12)} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
               <BrightCard
                 color="violet"
                 bg="#f5f3ff"
@@ -294,7 +295,7 @@ export default function AiOnboardingPage() {
           <div />
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 700, color: "#0d0d0d", lineHeight: 1.3 }}>
             Users don&apos;t need to be convinced AI is good. They need to{" "}
-            <em style={{ color: "#22c55e", fontStyle: "normal" }}>feel in control</em>{" "}
+            <em style={{ color: "#16a34a", fontStyle: "normal" }}>feel in control</em>{" "}
             while it&apos;s working.
           </p>
         </div>
@@ -307,9 +308,9 @@ export default function AiOnboardingPage() {
         emphasisWord="commitment."
         emphasisColor="#0284c7"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -331,9 +332,9 @@ export default function AiOnboardingPage() {
         emphasisWord="changed"
         emphasisColor="#0284c7"
         shape="star"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={6}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -448,9 +449,9 @@ export default function AiOnboardingPage() {
         emphasisWord="strategist."
         emphasisColor="#0284c7"
         shape="triangle"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={12}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -507,9 +508,9 @@ export default function AiOnboardingPage() {
         emphasisWord="goes"
         emphasisColor="#0284c7"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={9}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>

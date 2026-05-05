@@ -80,7 +80,7 @@ export default function BrightCard({
         padding: isSmall ? "18px 22px" : "28px 32px",
         position: "relative",
         overflow: "hidden",
-        height: "100%",
+        flex: 1,
       }}
     >
       {/* ── Spinning watermark ── */}

@@ -32,7 +32,7 @@ function HeroShapes() {
         <svg width="110" height="115" viewBox="25 30 110 115" fill="none">
           <motion.path
             d={FLOWER_PATH}
-            stroke="#22c55e"
+            stroke="#16a34a"
             strokeWidth="2.5"
             strokeLinecap="round"
             fill="none"
@@ -89,7 +89,7 @@ function HeroShapes() {
       </motion.div>
 
       <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#fb923c", opacity: 0.5 }} />
-      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#22c55e", opacity: 0.45 }} />
+      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#4f46e5", opacity: 0.45 }} />
     </>
   );
@@ -191,6 +191,7 @@ export default function MvpPage() {
       headline="Taking Pasito's first product from sketches to validated prototype."
       headlineEmphasis="validated prototype."
       subtitle="Solo designer. Two dashboards. 20+ user tests. And a design practice built from scratch inside a startup that didn't have one."
+      heroImageSrc="/images/pasito/pasito-home.png"
       heroImageLabel="Pasito MVP — final prototype"
       heroShapes={<HeroShapes />}
       meta={{
@@ -199,8 +200,8 @@ export default function MvpPage() {
         team: "Pauline Roteta · Julie Scotland · Angela Lin",
         tools: "Figma · Miro",
       }}
-      prev={{ label: "Marketing Website", href: "/work/pasito/marketing-website" }}
-      next={{ label: "Copley AI Brief", href: "/work/copley/ai-brief" }}
+      prev={{ label: "Buttons", href: "/work/well/buttons" }}
+      next={{ label: "Marketing Website", href: "/work/pasito/marketing-website" }}
     >
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
@@ -237,11 +238,11 @@ export default function MvpPage() {
         eyebrow="Research"
         title="Introducing design thinking to a startup."
         emphasisWord="startup."
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -249,7 +250,7 @@ export default function MvpPage() {
           <p style={prose} className="mb-8">
             Pauline and Julie were business-minded founders who hadn&apos;t worked with a designer before. One of my first contributions wasn&apos;t a design — it was introducing them to a design process. I ran a series of workshops to help the team ideate together: affinity mapping, crazy 8s, and feedback synthesis from marketing validation interviews with working parents. What came out of those sessions was a shared understanding of what the product actually needed to be — not just what the founders had imagined, but what users were asking for.
           </p>
-          <ImgBox label="Workshop affinity map" hexColor="#22c55e" height={300} />
+          <img src="/images/pasito/affinity-map.jpg" alt="Workshop affinity map" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
         </TwoColRow>
       </Section>
 
@@ -271,8 +272,8 @@ export default function MvpPage() {
             With a clearer picture of the product, we developed user flows for the core experience: a question flow that would collect information from employees upfront, and the dashboard they&apos;d land on after. I mapped out a site map and sketched the structure before moving into Figma.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ImgBox label="Site map" hexColor="#fb923c" height={240} />
-            <ImgBox label="Early sketches" hexColor="#4f46e5" height={240} />
+            <img src="/images/pasito/sketch-1.jpg" alt="Site map" style={{ width: "100%", borderRadius: 16 }} />
+            <img src="/images/pasito/sketch-2.jpg" alt="Early sketches" style={{ width: "100%", borderRadius: 16 }} />
           </div>
         </TwoColRow>
       </Section>
@@ -282,11 +283,11 @@ export default function MvpPage() {
         eyebrow="Design"
         title="From lo-fi to clickable prototype."
         emphasisWord="prototype."
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="star"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={6}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -294,10 +295,6 @@ export default function MvpPage() {
           <p style={prose} className="mb-8">
             I built the lo-fi prototype first, working through the core screens: the onboarding question flow, paycheck comparison, income tax comparison, the learn tab, and the employee dashboard. The design principle throughout: make complex financial information feel approachable. The product was asking people to understand FSAs, dependent care tax credits, and paycheck breakdowns — none of which are intuitive. The design had to do real work.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <ImgBox label="Question flow — lo-fi" hexColor="#0284c7" height={240} />
-            <ImgBox label="Paycheck comparison — lo-fi" hexColor="#0284c7" height={240} />
-          </div>
           <BrightCard
             color="blue"
             bg="#d6f1fc"
@@ -311,13 +308,15 @@ export default function MvpPage() {
           />
         </TwoColRow>
 
-        <TwoColRow label="Employee Dashboard" isLast>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <ImgBox label="Homepage" hexColor="#22c55e" height={280} />
-            <ImgBox label="Paycheck comparison" hexColor="#22c55e" height={280} />
-            <ImgBox label="Discounts" hexColor="#22c55e" height={280} />
+        {/* Full-width lo-fi screens */}
+        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+          <div className="grid grid-cols-3 gap-4">
+            <img src="/images/pasito/lofi-1.png" alt="Question flow — lo-fi" style={{ width: "100%", borderRadius: 16 }} />
+            <img src="/images/pasito/lofi-2.png" alt="Paycheck comparison — lo-fi" style={{ width: "100%", borderRadius: 16 }} />
+            <img src="/images/pasito/lofi-3.png" alt="Homepage" style={{ width: "100%", borderRadius: 16 }} />
           </div>
-        </TwoColRow>
+        </div>
+
       </Section>
 
       {/* ══ USER TESTING ═════════════════════════════════════════════════ */}
@@ -351,25 +350,34 @@ export default function MvpPage() {
         </TwoColRow>
       </Section>
 
-      {/* ══ EMPLOYER DASHBOARD ═══════════════════════════════════════════ */}
+      {/* ══ HI-FI ════════════════════════════════════════════════════════ */}
       <SectionBreak
-        eyebrow="The employer dashboard"
-        title="Designing for both sides."
-        emphasisWord="both sides."
-        emphasisColor="#fb923c"
-        shape="triangle"
-        shapeColor="#fb923c"
-        spinDuration={12}
-        dotColor="#fb923c"
+        eyebrow="Hi-fi design"
+        title="From lo-fi to polished product."
+        emphasisWord="polished product."
+        emphasisColor="#16a34a"
+        shape="hexagon"
+        shapeColor="#16a34a"
+        spinDuration={10}
+        dotColor="#16a34a"
       />
 
       <Section>
-        <TwoColRow label="Employer Dashboard" isLast>
+        <TwoColRow label="Hi-Fi Screens">
           <p style={prose} className="mb-8">
-            Alongside the employee product, I designed an employer dashboard for HR professionals — following the same research and iteration process. By December 2022, the MVP had reached a point of maturity that set the foundation for what Pasito would become after YCombinator.
+            With user testing insights incorporated, I moved the employee dashboard into hi-fi. The visual system prioritized clarity over density — progressive disclosure of complex financial data, a consistent card-based layout, and a color system that flagged recommended actions without overwhelming users. Every screen was designed to answer one question at a glance: what should I do next?
           </p>
-          <ImgBox label="Employer dashboard" hexColor="#fb923c" height={360} />
         </TwoColRow>
+
+        {/* Full-width hi-fi screens */}
+        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img src="/images/pasito/hifi-1.png" alt="Hi-fi screen 1" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
+            <img src="/images/pasito/hifi-2.png" alt="Hi-fi screen 2" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
+            <img src="/images/pasito/hifi-3.png" alt="Hi-fi screen 3" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
+          </div>
+        </div>
+
       </Section>
 
       {/* ══ 2022 UPDATE ══════════════════════════════════════════════════ */}
@@ -389,9 +397,8 @@ export default function MvpPage() {
           <p style={prose} className="mb-8">
             After YCombinator in 2022, Pasito shifted from a tax-focused tool to a broader HR communications platform — integrating payroll, financial, and claims data to optimize employee benefits coverage and utilization. The mission evolved, and so did the design. I redesigned the product to match the new direction: updated visual language, restructured information architecture, and new hi-fi mockups for the expanded product scope.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ImgBox label="Updated hi-fi — screen 1" hexColor="#2dd4bf" height={280} />
-            <ImgBox label="Updated hi-fi — screen 2" hexColor="#2dd4bf" height={280} />
+          <div style={{ borderRadius: 16, border: "1px solid #e5e5e2", overflow: "hidden" }}>
+            <img src="/images/pasito/2024.png" alt="2022 update" style={{ width: "100%", display: "block", transform: "scale(1.03)", transformOrigin: "center" }} />
           </div>
         </TwoColRow>
       </Section>

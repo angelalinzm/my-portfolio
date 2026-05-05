@@ -33,7 +33,7 @@ function HeroShapes() {
         <svg width="110" height="115" viewBox="25 30 110 115" fill="none">
           <motion.path
             d={FLOWER_PATH}
-            stroke="#22c55e"
+            stroke="#16a34a"
             strokeWidth="2.5"
             strokeLinecap="round"
             fill="none"
@@ -90,7 +90,7 @@ function HeroShapes() {
       </motion.div>
 
       <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#0284c7", opacity: 0.5 }} />
-      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#22c55e", opacity: 0.45 }} />
+      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#fb923c", opacity: 0.45 }} />
     </>
   );
@@ -207,11 +207,11 @@ export default function WebOnboardingPage() {
         eyebrow="Dissecting the brief"
         title="Lo-fi wireframes, a clear flow, and one open-ended brief."
         emphasisWord="open-ended"
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -246,11 +246,11 @@ export default function WebOnboardingPage() {
         eyebrow="Teaching myself"
         title="Responsive design — documented for the whole team."
         emphasisWord="documented"
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -269,11 +269,11 @@ export default function WebOnboardingPage() {
         eyebrow="The craft"
         title="A month of illustration, iteration, and storytelling."
         emphasisWord="iteration"
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="star"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={6}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -286,6 +286,7 @@ export default function WebOnboardingPage() {
           </p>
           <BrightCard
             color="green"
+            bg="#f0fdf4"
             tag="DESIGN INTENT"
             title="Well isn't a destination. It's a journey."
             titleEmphasis="journey."
@@ -348,6 +349,7 @@ export default function WebOnboardingPage() {
           </p>
           <BrightCard
             color="amber"
+            bg="#fff7ed"
             tag="DESIGN PRINCIPLE"
             title="Sometimes good design is the honest solution."
             titleEmphasis="honest"

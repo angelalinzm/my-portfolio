@@ -14,7 +14,7 @@ const config: Config = {
           bg: "#ffffff",
           "page-bg": "#f0f0ed",
           text: "#0d0d0d",
-          green: "#22c55e",
+          green: "#16a34a",
           violet: "#a78bfa",
           amber: "#fb923c",
           blue: "#38bdf8",

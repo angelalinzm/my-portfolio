@@ -35,12 +35,10 @@ export default function HomePage() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-brand-text"
             style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "-0.02em" }}
           >
-            Design
-            <em style={{ color: "#22c55e", fontStyle: "normal" }}>ing</em>{" "}
-            experiences
+            Designing human-first experiences
             <br />
-            that{" "}
-            <em style={{ color: "#22c55e", fontStyle: "normal" }}>matter.</em>
+            for the{" "}
+            <em style={{ color: "#16a34a", fontStyle: "normal" }}>new world.</em>
           </motion.h1>
 
           {/* Subline */}
@@ -116,7 +114,7 @@ export default function HomePage() {
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Hi, I&apos;m{" "}
-              <em style={{ color: "#22c55e", fontStyle: "normal" }}>Angela.</em>
+              <em style={{ color: "#16a34a", fontStyle: "normal" }}>Angela.</em>
             </h2>
             <p
               className="text-lg text-brand-text/60 leading-relaxed mb-6"

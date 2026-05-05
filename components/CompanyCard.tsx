@@ -19,6 +19,9 @@ interface Project {
   inProgress?: boolean;
   size?: "large" | "small";
   imageSrc?: string;
+  imageFit?: "cover" | "contain";
+  imagePosition?: string;
+  comingSoon?: boolean;
 }
 
 interface CompanyCardProps {
@@ -49,22 +52,12 @@ export default function CompanyCard({
     <div
       className="w-full rounded-3xl p-6 md:p-8"
       style={{
-        background: "#ffffff",
+        background: "#fafaf8",
         boxShadow: "0 2px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
       }}
     >
       {/* Header row */}
       <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span
-          className="px-3 py-1 rounded-full text-xs font-semibold"
-          style={{
-            background: "#0d0d0d",
-            color: "#fff",
-            fontFamily: "'DM Sans', sans-serif",
-          }}
-        >
-          {name}
-        </span>
         <span
           className="px-3 py-1 rounded-full text-xs font-medium"
           style={{
@@ -75,68 +68,28 @@ export default function CompanyCard({
         >
           {dates}
         </span>
-        <span
-          className="px-3 py-1 rounded-full text-xs font-medium"
-          style={{
-            background: chip.bg,
-            color: chip.text,
-            fontFamily: "'DM Sans', sans-serif",
-          }}
-        >
-          {descriptor}
-        </span>
       </div>
 
       {/* Company title */}
       <h3
-        className="text-2xl md:text-3xl font-semibold mb-3 text-brand-text"
+        className="text-2xl md:text-3xl font-semibold mb-1 text-brand-text"
         style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600 }}
       >
-        {title}
+        {name}
       </h3>
-
-      {/* Tags */}
-      <div className="flex flex-wrap gap-2 mb-5">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs text-brand-text/50"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
-          >
-            {tag}
-          </span>
-        ))}
-        {tags.map((_, i) =>
-          i < tags.length - 1 ? null : null
-        )}
-      </div>
-
-      {/* Tag row with separators */}
-      <div className="flex flex-wrap items-center gap-1.5 mb-5">
-        {tags.map((tag, i) => (
-          <span key={tag} className="flex items-center gap-1.5">
-            <span
-              className="text-xs font-medium text-brand-text/50"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              {tag}
-            </span>
-            {i < tags.length - 1 && (
-              <span className="text-brand-text/20 text-xs">·</span>
-            )}
-          </span>
-        ))}
-      </div>
-
-      {/* Divider */}
-      <div className="w-full h-px bg-black/8 mb-6" />
+      <p
+        className="mb-6"
+        style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 400, color: "rgba(13,13,13,0.45)" }}
+      >
+        {title}
+      </p>
 
       {/* Project grid */}
       {smallProjects.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4" style={{ gridTemplateColumns: smallProjects.length >= 2 ? "3fr 2fr" : "2fr 1.2fr" }}>
           {/* Large card */}
           {largeProject && (
-            <div className="min-h-[220px] md:min-h-[260px]">
+            <div className="min-h-[320px] md:min-h-[400px]">
               <ProjectCard
                 title={largeProject.title}
                 label={largeProject.label}
@@ -145,13 +98,16 @@ export default function CompanyCard({
                 inProgress={largeProject.inProgress}
                 size="large"
                 imageSrc={largeProject.imageSrc}
+                imageFit={largeProject.imageFit}
+                imagePosition={largeProject.imagePosition}
+                comingSoon={largeProject.comingSoon}
               />
             </div>
           )}
           {/* Small cards stacked */}
           <div className="flex flex-col gap-4">
             {smallProjects.map((p) => (
-              <div key={p.id} className="flex-1 min-h-[120px]">
+              <div key={p.id} className="flex-1 min-h-[180px]">
                 <ProjectCard
                   title={p.title}
                   label={p.label}
@@ -160,6 +116,9 @@ export default function CompanyCard({
                   inProgress={p.inProgress}
                   size="small"
                   imageSrc={p.imageSrc}
+                  imageFit={p.imageFit}
+                  imagePosition={p.imagePosition}
+                  comingSoon={p.comingSoon}
                 />
               </div>
             ))}
@@ -168,7 +127,7 @@ export default function CompanyCard({
       ) : (
         /* Only one project */
         largeProject && (
-          <div className="min-h-[220px]">
+          <div className="min-h-[400px]">
             <ProjectCard
               title={largeProject.title}
               label={largeProject.label}
@@ -182,16 +141,6 @@ export default function CompanyCard({
         )
       )}
 
-      {/* View all link */}
-      <div className="mt-5 flex justify-end">
-        <Link
-          href={`/work`}
-          className="inline-flex items-center gap-2 text-sm font-medium text-brand-text/60 hover:text-brand-text transition-colors"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
-        >
-          View all {name} work →
-        </Link>
-      </div>
     </div>
   );
 }

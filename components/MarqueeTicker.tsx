@@ -30,7 +30,7 @@ export default function MarqueeTicker() {
           >
             <span
               className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
-              style={{ background: "#22c55e", opacity: 0.7 }}
+              style={{ background: "#16a34a", opacity: 0.7 }}
             />
             {item}
           </span>

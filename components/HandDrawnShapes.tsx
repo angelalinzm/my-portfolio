@@ -157,7 +157,7 @@ function WobblyTriangle({ color, style, delay = 0 }: ShapeProps) {
 export default function HandDrawnShapes() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <WobblyFlower color="#22c55e" style={{ top: "80px", left: "20px" }} delay={0} />
+      <WobblyFlower color="#16a34a" style={{ top: "80px", left: "20px" }} delay={0} />
       <WobblySquiggle color="#4f46e5" style={{ top: "180px", left: "60px" }} delay={0.3} />
       <WobblyHexagon color="#4f46e5" style={{ top: "70px", right: "40px" }} delay={0.2} />
       <WobblyTriangle color="#fb923c" style={{ top: "165px", right: "100px" }} delay={0.5} />

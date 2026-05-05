@@ -30,7 +30,7 @@ export default function SectionBreak({
   shape = "star",
   shapeColor = "#0284c7",
   spinDuration = 8,
-  dotColor = "#22c55e",
+  dotColor = "#16a34a",
 }: SectionBreakProps) {
   const parts = title.split(emphasisWord);
   const emphColor = emphasisColor ?? shapeColor;

@@ -32,7 +32,7 @@ function HeroShapes() {
         <svg width="110" height="115" viewBox="25 30 110 115" fill="none">
           <motion.path
             d={FLOWER_PATH}
-            stroke="#22c55e"
+            stroke="#16a34a"
             strokeWidth="2.5"
             strokeLinecap="round"
             fill="none"
@@ -89,7 +89,7 @@ function HeroShapes() {
       </motion.div>
 
       <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#fb923c", opacity: 0.5 }} />
-      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#22c55e", opacity: 0.45 }} />
+      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#4f46e5", opacity: 0.45 }} />
     </>
   );
@@ -191,6 +191,7 @@ export default function MarketingWebsitePage() {
       headline="Building Pasito's brand and website from scratch."
       headlineEmphasis="scratch."
       subtitle="Brand identity, visual language, and a four-page site — designed end to end as my first project at a YC-backed fintech startup."
+      heroImageSrc="/images/pasito/marketing.png"
       heroImageLabel="Final website design"
       heroShapes={<HeroShapes />}
       meta={{
@@ -200,7 +201,7 @@ export default function MarketingWebsitePage() {
         tools: "Figma · Jira",
       }}
       prev={{ label: "Pasito MVP", href: "/work/pasito/mvp" }}
-      next={{ label: "Copley AI Brief", href: "/work/copley/ai-brief" }}
+      next={{ label: "Manual to Agentic Briefs", href: "/work/copley/ai-brief" }}
     >
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
@@ -229,11 +230,11 @@ export default function MarketingWebsitePage() {
         eyebrow="Research"
         title="Learning the landscape."
         emphasisWord="landscape."
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -241,7 +242,7 @@ export default function MarketingWebsitePage() {
           <p style={prose} className="mb-8">
             Before designing anything, I audited the existing site with the co-founders. The verdict was quick: it didn&apos;t have the information or the design to attract clients. I moved into competitor research — studying how other fintech and HR benefits companies presented their product and mission online, and what messaging patterns were working. I brought findings back to Pauline and Julie, and we used that as the foundation to define what the new site needed to do.
           </p>
-          <ImgBox label="Original Pasito website — before" hexColor="#aaa" height={320} />
+          <img src="/images/pasito/old.png" alt="Original Pasito website" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
         </TwoColRow>
       </Section>
 
@@ -291,11 +292,11 @@ export default function MarketingWebsitePage() {
         eyebrow="Design"
         title="Brand identity and visual language."
         emphasisWord="visual language."
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="star"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={6}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -317,15 +318,18 @@ export default function MarketingWebsitePage() {
         </TwoColRow>
 
         <TwoColRow label="Deliverables" isLast>
-          <p style={prose} className="mb-8">
+          <p style={prose}>
             After multiple iterations in Figma, I delivered final designs for all four pages.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <ImgBox label="Homepage"      hexColor="#fb923c" height={380} />
-            <ImgBox label="For Employers" hexColor="#0284c7" height={380} />
-            <ImgBox label="About Us"      hexColor="#4f46e5" height={380} />
-          </div>
         </TwoColRow>
+
+        <div style={{ padding: "40px 0" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img src="/images/pasito/Homepage.jpg" alt="Homepage" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
+            <img src="/images/pasito/For Employers.jpg" alt="For Employers" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
+            <img src="/images/pasito/About Us.jpg" alt="About Us" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
+          </div>
+        </div>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}

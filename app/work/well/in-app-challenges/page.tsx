@@ -36,7 +36,7 @@ function HeroShapes() {
         <svg width="110" height="115" viewBox="25 30 110 115" fill="none">
           <motion.path
             d={FLOWER_PATH}
-            stroke="#22c55e"
+            stroke="#16a34a"
             strokeWidth="2.5"
             strokeLinecap="round"
             fill="none"
@@ -93,7 +93,7 @@ function HeroShapes() {
       </motion.div>
 
       <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#0284c7", opacity: 0.5 }} />
-      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#22c55e", opacity: 0.45 }} />
+      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#fb923c", opacity: 0.45 }} />
     </>
   );
@@ -203,7 +203,7 @@ export default function InAppChallengesPage() {
         shape="star"
         shapeColor="#0284c7"
         spinDuration={8}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -241,9 +241,9 @@ export default function InAppChallengesPage() {
         emphasisWord="habits?"
         subtitle="Habits = Challenges"
         shape="diamond"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -266,6 +266,7 @@ export default function InAppChallengesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <BrightCard
               color={t.hexad.extrinsic.color as "amber"}
+              bg="#fff7ed"
               tag="Extrinsic · motivated by rewards"
               shape={t.hexad.extrinsic.shape as "diamond"}
               spinDir={t.hexad.extrinsic.spinDir as "spinr"}
@@ -280,6 +281,7 @@ export default function InAppChallengesPage() {
 
             <BrightCard
               color={t.hexad.intrinsic.color as "teal"}
+              bg="#f0fdfa"
               tag="Intrinsic · personally motivated"
               shape={t.hexad.intrinsic.shape as "hexagon"}
               spinDir={t.hexad.intrinsic.spinDir as "spin"}
@@ -352,6 +354,7 @@ export default function InAppChallengesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <BrightCard
               color={t.tracks[0].color as "violet"}
+              bg="#f5f3ff"
               tag="Track A"
               title="Challenges"
               titleItalic
@@ -362,6 +365,7 @@ export default function InAppChallengesPage() {
             />
             <BrightCard
               color={t.tracks[1].color as "pink"}
+              bg="#fdf4ff"
               tag="Track B"
               title="Offers"
               titleItalic
@@ -393,9 +397,9 @@ export default function InAppChallengesPage() {
         emphasisWord="machinations"
         subtitle="Rewarding both intrinsic and extrinsic users."
         shape="star"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={6}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>
@@ -407,6 +411,7 @@ export default function InAppChallengesPage() {
           <div className="flex flex-col gap-3">
             <BrightCard
               color={t.keyDecisions[0].color as "blue"}
+              bg="#eff6ff"
               tag="Key decision"
               title='Rewards show "ready to claim" throughout — not just at the end'
               body="Extrinsic users need visible proof the system is working. Making points visible throughout kept the reward loop active even before intrinsic motivation kicked in."
@@ -416,6 +421,7 @@ export default function InAppChallengesPage() {
             />
             <BrightCard
               color={t.keyDecisions[1].color as "green"}
+              bg="#f0fdf4"
               tag="The outcome"
               title="Constraint pushed toward clearer hierarchy"
               body="Rather than relying on complex interactions, the constraint pushed me toward stronger information hierarchy — making the design more accessible, not less."
@@ -470,16 +476,6 @@ export default function InAppChallengesPage() {
             ))}
           </div>
         </TwoColRow>
-
-        {/* Closing paragraph */}
-        <motion.div {...fadeUp(0.15)} className="flex justify-center" style={{ padding: "48px 0" }}>
-          <p
-            className="text-center"
-            style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, color: "#0d0d0d", lineHeight: 1.7 }}
-          >
-            {c.futureStates.closing}
-          </p>
-        </motion.div>
       </Section>
 
       {/* ══ SKILLS & TOOLS ═══════════════════════════════════════════════ */}

@@ -33,7 +33,7 @@ function HeroShapes() {
         <svg width="110" height="115" viewBox="25 30 110 115" fill="none">
           <motion.path
             d={FLOWER_PATH}
-            stroke="#22c55e"
+            stroke="#16a34a"
             strokeWidth="2.5"
             strokeLinecap="round"
             fill="none"
@@ -90,7 +90,7 @@ function HeroShapes() {
       </motion.div>
 
       <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#fb923c", opacity: 0.5 }} />
-      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#22c55e", opacity: 0.45 }} />
+      <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#4f46e5", opacity: 0.45 }} />
     </>
   );
@@ -272,8 +272,8 @@ export default function AiBriefPage() {
         team: "Angela Lin · Mike Torra (CTO) · David Henriquez (CEO) · Kevin McNerney (Principal SWE) · Maddie Daly (Staff SWE)",
         tools: "Figma",
       }}
-      prev={{ label: "Pasito MVP", href: "/work/pasito/mvp" }}
-      next={{ label: "Copley Design System", href: "/work/copley/design-system" }}
+      prev={{ label: "Marketing Website", href: "/work/pasito/marketing-website" }}
+      next={{ label: "AI Onboarding", href: "/work/copley/ai-onboarding" }}
     >
 
       {/* ══ OVERVIEW ═════════════════════════════════════════════════════ */}
@@ -334,11 +334,11 @@ export default function AiBriefPage() {
         eyebrow="Gen 2 — October 2025"
         title="Adding a voice — but in the wrong place."
         emphasisWord="wrong place."
-        emphasisColor="#22c55e"
+        emphasisColor="#16a34a"
         shape="triangle"
-        shapeColor="#22c55e"
+        shapeColor="#16a34a"
         spinDuration={10}
-        dotColor="#22c55e"
+        dotColor="#16a34a"
       />
 
       <Section>

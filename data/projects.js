@@ -10,10 +10,10 @@ export const companies = [
     projects: [
       {
         id: "ai-brief",
-        title: "AI Brief to Campaign",
+        title: "Manual to Agentic Briefs",
         label: "AI Workflow",
         size: "large",
-        gradient: "linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%)",
+        gradient: "linear-gradient(135deg, #16a34a 0%, #16a34a 50%, #4ade80 100%)",
         imageSrc: "/images/copley/agent.png",
         route: "/work/copley/ai-brief",
         inProgress: false,
@@ -41,6 +41,7 @@ export const companies = [
         gradient: "linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%)",
         route: "/work/copley/design-system",
         inProgress: false,
+        comingSoon: true,
         description:
           "Built a scalable component library and information architecture framework from 0→1 to unify the platform's design language.",
         role: "Sole Product Designer",
@@ -63,8 +64,9 @@ export const companies = [
         label: "UX Strategy",
         size: "small",
         gradient: "linear-gradient(135deg, #ea580c 0%, #fb923c 100%)",
+        imageSrc: "/images/copley/onboarding-home.png",
         route: "/work/copley/ai-onboarding",
-        inProgress: true,
+        inProgress: false,
         description:
           "Designing first-run experience for AI features — helping users build trust and confidence with AI-generated outputs.",
         role: "Sole Product Designer",
@@ -184,6 +186,7 @@ export const companies = [
         label: "MVP Design",
         size: "large",
         gradient: "linear-gradient(135deg, #be185d 0%, #f472b6 60%, #fbcfe8 100%)",
+        imageSrc: "/images/pasito/pasito-home.png",
         route: "/work/pasito/mvp",
         inProgress: false,
         description:
@@ -208,6 +211,7 @@ export const companies = [
         label: "Brand Identity",
         size: "small",
         gradient: "linear-gradient(135deg, #0f766e 0%, #2dd4bf 100%)",
+        imageSrc: "/images/pasito/marketing-website.png",
         route: "/work/pasito/marketing-website",
         inProgress: false,
         description:
@@ -376,7 +380,7 @@ export const inAppChallengesContent = {
     gray: ["Figma", "Jira"],
   },
   nav: {
-    prev: { label: "PZC", href: "#" },
+    prev: { label: "AI Onboarding", href: "/work/copley/ai-onboarding" },
     next: { label: "Web Onboarding", href: "/work/well/web-onboarding" },
   },
 };
