@@ -60,7 +60,7 @@ export default function WorkSection({ id, standalonePage = false }: WorkSectionP
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, ease }}
-          className="mb-16"
+          className="mb-8"
         >
           <h2
             className={`font-bold mb-4 leading-tight ${
@@ -76,7 +76,7 @@ export default function WorkSection({ id, standalonePage = false }: WorkSectionP
             </em>
           </h2>
           <p
-            className="text-base md:text-lg text-brand-text/60 max-w-lg"
+            className="text-base md:text-lg text-brand-text/60 whitespace-nowrap"
             style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
           >
             Product design across AI platforms, health tech, and consumer apps.

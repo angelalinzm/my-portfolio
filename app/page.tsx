@@ -67,17 +67,6 @@ export default function HomePage() {
             >
               View my work
             </a>
-            <a
-              href="#work"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium text-brand-text transition-all hover:bg-black/5 hover:scale-[1.02] active:scale-[0.98]"
-              style={{
-                border: "1.5px solid rgba(13,13,13,0.2)",
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 500,
-              }}
-            >
-              See case studies →
-            </a>
           </motion.div>
         </div>
 

@@ -56,20 +56,6 @@ export default function CompanyCard({
         boxShadow: "0 2px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)",
       }}
     >
-      {/* Header row */}
-      <div className="flex flex-wrap items-center gap-2 mb-4">
-        <span
-          className="px-3 py-1 rounded-full text-xs font-medium"
-          style={{
-            background: "#f0f0ed",
-            color: "#0d0d0d",
-            fontFamily: "'DM Sans', sans-serif",
-          }}
-        >
-          {dates}
-        </span>
-      </div>
-
       {/* Company title */}
       <h3
         className="text-2xl md:text-3xl font-semibold mb-1 text-brand-text"
@@ -78,10 +64,12 @@ export default function CompanyCard({
         {name}
       </h3>
       <p
-        className="mb-6"
-        style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 400, color: "rgba(13,13,13,0.45)" }}
+        className="mb-6 flex items-center gap-1.5"
+        style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 400, color: "rgba(13,13,13,0.45)" }}
       >
         {title}
+        <span style={{ fontSize: 14, lineHeight: 1, fontWeight: 700, color: "rgba(13,13,13,0.3)" }}>·</span>
+        {dates}
       </p>
 
       {/* Project grid */}

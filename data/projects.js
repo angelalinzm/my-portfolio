@@ -1,7 +1,7 @@
 export const companies = [
   {
     id: "copley",
-    name: "Copley Advertising",
+    name: "Copley",
     dates: "2024–2026",
     descriptor: "Sole designer",
     descriptorColor: "green",

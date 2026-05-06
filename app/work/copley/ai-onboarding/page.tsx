@@ -321,8 +321,11 @@ export default function AiOnboardingPage() {
           <p style={prose} className="mb-8">
             I flipped the logic entirely. The new flow shows value first, earns trust through transparency, then asks for commitment. By the time a user reaches the sign-up form, they&apos;ve already seen a real insight from their own data. Sign-up becomes confirmation, not a blind leap.
           </p>
-          <img src="/images/copley/onboarding-flow.png" alt="Onboarding flow map" style={{ width: "100%", borderRadius: 16 }} />
         </TwoColRow>
+
+        <div style={{ padding: "40px 0" }}>
+          <img src="/images/copley/onboarding-flow.png" alt="Onboarding flow map" style={{ width: "100%", borderRadius: 16 }} />
+        </div>
       </Section>
 
       {/* ══ KEY DESIGN DECISIONS ═════════════════════════════════════════ */}
@@ -349,7 +352,7 @@ export default function AiOnboardingPage() {
 
         {/* Full-width: insights screen */}
         <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
-          <img src="/images/copley/opportunities.png" alt="Insight card — opportunities screen" style={{ width: "80%", borderRadius: 16, display: "block", margin: "0 auto" }} />
+          <img src="/images/copley/opportunities.png" alt="Insight card — opportunities screen" style={{ width: "88%", borderRadius: 16, display: "block", margin: "0 auto", border: "1px solid #e5e5e2" }} />
         </div>
 
         <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
@@ -379,6 +382,7 @@ export default function AiOnboardingPage() {
           </div>
         </div>
 
+        <div style={{ marginTop: 56 }}>
         <TwoColRow label="Decision 02 — The FTUE Brief Agent">
           <p style={prose} className="mb-5">
             The existing brief agent was built for power users — it opened cold and asked a series of configuration questions before generating anything. For a first-timer, that&apos;s a blank-page problem disguised as a feature.
@@ -426,7 +430,9 @@ export default function AiOnboardingPage() {
             />
           </div>
         </div>
+        </div>
 
+        <div style={{ marginTop: 56 }}>
         <TwoColRow label="Decision 03 — Dismissal Feedback" isLast>
           <p style={prose} className="mb-5">
             AI-generated ads won&apos;t always be perfect. Pretending otherwise erodes trust faster than bad output does. The question was: how do you turn a bad ad into a trust moment?
@@ -434,12 +440,12 @@ export default function AiOnboardingPage() {
           <p style={prose} className="mb-8">
             When a user dismisses a variant, a small message appears in the agent panel: &ldquo;Not quite right — I&apos;ll use that to refine the next one.&rdquo; The replacement appears in the same slot. The first time it happens, the agent explains it. After that, it&apos;s silent. The system learns visibly, in real time, from the user&apos;s own judgment.
           </p>
-          <ImgBox
-            label="Variants screen — Suggested · Saved · Deleted feedback system"
-            hexColor="#fb923c"
-            height={320}
-          />
         </TwoColRow>
+
+        <div style={{ padding: "40px 0" }}>
+          <img src="/images/copley/errors.png" alt="Variants screen — Suggested · Saved · Deleted feedback system" style={{ width: "100%", borderRadius: 16 }} />
+        </div>
+        </div>
       </Section>
 
       {/* ══ CREATIVE DIRECTION ═══════════════════════════════════════════ */}
