@@ -39,7 +39,7 @@ export default function Navbar() {
       <Link
         href="/"
         className="font-display text-2xl font-bold text-brand-text select-none"
-        style={{ fontFamily: "'Playfair Display', serif", letterSpacing: "-0.01em" }}
+        style={{ fontFamily: "'Urbanist', sans-serif", letterSpacing: "-0.01em" }}
       >
         al.
       </Link>
@@ -52,10 +52,10 @@ export default function Navbar() {
           onClick={handleWorkClick}
           className={`text-sm font-medium transition-colors cursor-pointer ${
             isWorkActive
-              ? "text-brand-green"
+              ? ""
               : "text-brand-text/70 hover:text-brand-text"
           }`}
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
+          style={{ fontFamily: "'DM Sans', sans-serif", color: isWorkActive ? "#e05a47" : undefined }}
         >
           Work
         </a>
@@ -106,8 +106,8 @@ export default function Navbar() {
           <a
             href={isHome ? "#work" : "/#work"}
             onClick={handleWorkClick}
-            className="text-lg font-medium text-brand-text cursor-pointer"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            className="text-lg font-medium cursor-pointer"
+            style={{ fontFamily: "'DM Sans', sans-serif", color: "#e05a47" }}
           >
             Work
           </a>

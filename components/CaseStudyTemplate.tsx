@@ -79,7 +79,7 @@ export default function CaseStudyTemplate({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease, delay: 0.1 }}
           className="text-4xl md:text-5xl font-bold mb-4 leading-tight"
-          style={{ fontFamily: "'Playfair Display', serif", color: "#0d0d0d" }}
+          style={{ fontFamily: "'Urbanist', sans-serif", color: "#0d0d0d" }}
         >
           {title}
         </motion.h1>
@@ -157,7 +157,7 @@ export default function CaseStudyTemplate({
         >
           <h2
             className="text-2xl md:text-3xl font-bold mb-5"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "'Urbanist', sans-serif" }}
           >
             The <em className="text-brand-green">challenge</em>
           </h2>
@@ -190,7 +190,7 @@ export default function CaseStudyTemplate({
         >
           <h2
             className="text-2xl md:text-3xl font-bold mb-10"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "'Urbanist', sans-serif" }}
           >
             The <em className="text-brand-green">process</em>
           </h2>
@@ -207,7 +207,7 @@ export default function CaseStudyTemplate({
                 <div className="flex-shrink-0">
                   <span
                     className="text-4xl font-bold text-brand-text/10"
-                    style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1 }}
+                    style={{ fontFamily: "'Urbanist', sans-serif", lineHeight: 1 }}
                   >
                     {step.number}
                   </span>

@@ -161,7 +161,7 @@ export default function ButtonsPage() {
       subtitle="Redesigning a core component system for contrast, text scaling, and multi-language support — with cleaner code underneath."
       heroImageLabel="Final button system"
       heroImageSrc="/images/well/well-buttons.png"
-      heroShapes={<HeroShapes />}
+
       meta={{
         role: "UX/UI Designer",
         timeline: "Mar – Apr 2022",
@@ -221,7 +221,7 @@ export default function ButtonsPage() {
               { number: "04", text: "Design all selection screens for the health journey flow" },
             ].map(({ number, text }) => (
               <div key={number} className="flex items-start gap-4" style={{ background: "#f7f7f5", borderRadius: 14, padding: "18px 20px" }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
+                <span style={{ fontFamily: "'Urbanist', sans-serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
                   {number}
                 </span>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 400, color: "#0d0d0d", lineHeight: 1.65 }}>

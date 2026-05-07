@@ -193,7 +193,7 @@ export default function MvpPage() {
       subtitle="Solo designer. Two dashboards. 20+ user tests. And a design practice built from scratch inside a startup that didn't have one."
       heroImageSrc="/images/pasito/pasito-home.png"
       heroImageLabel="Pasito MVP — final prototype"
-      heroShapes={<HeroShapes />}
+
       meta={{
         role: "UX/UI Designer · User Researcher",
         timeline: "Jun 2021 – Dec 2022",

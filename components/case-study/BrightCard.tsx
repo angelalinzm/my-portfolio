@@ -135,7 +135,7 @@ export default function BrightCard({
           <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
             <span
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Urbanist', sans-serif",
                 fontSize: 28,
                 fontWeight: 700,
                 color: "rgba(0,0,0,0.2)",
@@ -163,7 +163,7 @@ export default function BrightCard({
             {title && (
               <h3
                 style={{
-                  fontFamily: "'Playfair Display', serif",
+                  fontFamily: "'Urbanist', sans-serif",
                   fontSize: isSmall ? 18 : 23,
                   fontWeight: 700,
                   letterSpacing: "-0.5px",

@@ -189,7 +189,7 @@ export default function InAppChallengesPage() {
       subtitle={c.subtitle}
       heroImageLabel={c.heroImageLabel}
       heroImageSrc="/images/well/well-in-app-challenges.png"
-      heroShapes={<HeroShapes />}
+
       meta={c.meta}
       prev={c.nav.prev}
       next={c.nav.next}
@@ -222,7 +222,7 @@ export default function InAppChallengesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {c.theStart.requirements.map((req, i) => (
               <div key={req} className="flex items-start gap-4" style={{ background: "#f7f7f5", borderRadius: 14, padding: "18px 20px" }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
+                <span style={{ fontFamily: "'Urbanist', sans-serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 400, color: "#0d0d0d", lineHeight: 1.65 }}>
@@ -462,7 +462,7 @@ export default function InAppChallengesPage() {
               <motion.div key={item.number} {...fadeUp(i * 0.06)} className="flex gap-6 md:gap-8">
                 <div className="flex-shrink-0">
                   <span
-                    style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", fontWeight: 700, color: "#7dd3fc", lineHeight: 1 }}
+                    style={{ fontFamily: "'Urbanist', sans-serif", fontSize: "2.5rem", fontWeight: 700, color: "#7dd3fc", lineHeight: 1 }}
                   >
                     {item.number}
                   </span>

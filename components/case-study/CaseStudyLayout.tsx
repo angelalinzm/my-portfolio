@@ -137,7 +137,7 @@ export default function CaseStudyLayout({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, ease, delay: 0.18 }}
                 style={{
-                  fontFamily: "'Playfair Display', serif",
+                  fontFamily: "'Urbanist', sans-serif",
                   fontSize: "clamp(44px, 6vw, 68px)",
                   fontWeight: 700,
                   letterSpacing: "-3px",

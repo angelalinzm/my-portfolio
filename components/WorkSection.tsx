@@ -68,10 +68,10 @@ export default function WorkSection({ id, standalonePage = false }: WorkSectionP
                 ? "text-4xl md:text-5xl lg:text-6xl"
                 : "text-3xl md:text-4xl lg:text-5xl"
             }`}
-            style={{ fontFamily: "'Playfair Display', serif", color: "#0d0d0d" }}
+            style={{ fontFamily: "'Urbanist', sans-serif", color: "#0d0d0d" }}
           >
             Selected{" "}
-            <em style={{ color: "#16a34a", fontStyle: "normal" }}>
+            <em style={{ color: "#e05a47", fontStyle: "normal" }}>
               work
             </em>
           </h2>

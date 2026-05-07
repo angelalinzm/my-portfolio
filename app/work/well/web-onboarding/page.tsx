@@ -162,7 +162,7 @@ export default function WebOnboardingPage() {
       subtitle="Multi-month project spanning illustration, responsive design, and real lessons in designing within business constraints."
       heroImageLabel="Web Onboarding — Final Mockup"
       heroImageSrc="/images/well/well-onboarding.png"
-      heroShapes={<HeroShapes />}
+
       meta={{
         role: "UX/UI Designer · Illustrator",
         timeline: "Feb – Apr 2022",
@@ -229,7 +229,7 @@ export default function WebOnboardingPage() {
               { number: "03", text: "Create an original illustration that embodies Well's mission" },
             ].map(({ number, text }) => (
               <div key={number} className="flex items-start gap-4" style={{ background: "#f7f7f5", borderRadius: 14, padding: "18px 20px" }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
+                <span style={{ fontFamily: "'Urbanist', sans-serif", fontSize: 22, fontWeight: 700, color: "#0284c7", opacity: 0.35, lineHeight: 1, flexShrink: 0, paddingTop: 2 }}>
                   {number}
                 </span>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 400, color: "#0d0d0d", lineHeight: 1.65 }}>

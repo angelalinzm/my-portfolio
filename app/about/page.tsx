@@ -54,7 +54,7 @@ export default function AboutPage() {
             </p>
             <h2
               className="text-2xl md:text-3xl font-bold mb-5 leading-snug"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              style={{ fontFamily: "'Urbanist', sans-serif" }}
             >
               Hi there, I&apos;m Angela!
             </h2>
@@ -110,7 +110,7 @@ export default function AboutPage() {
         >
           <h2
             className="text-2xl md:text-3xl font-bold mb-8"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "'Urbanist', sans-serif" }}
           >
             Skills &{" "}
             <em style={{ color: "#0284c7", fontStyle: "normal" }}>expertise</em>
@@ -143,7 +143,7 @@ export default function AboutPage() {
         >
           <h2
             className="text-2xl md:text-3xl font-bold mb-8"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "'Urbanist', sans-serif" }}
           >
             Experience
           </h2>

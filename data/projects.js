@@ -11,7 +11,7 @@ export const companies = [
       {
         id: "ai-brief",
         title: "Manual to Agentic Briefs",
-        label: "AI Workflow",
+        label: "AI Workflow & Conversational Design",
         size: "large",
         gradient: "linear-gradient(135deg, #16a34a 0%, #16a34a 50%, #4ade80 100%)",
         imageSrc: "/images/copley/agent.png",

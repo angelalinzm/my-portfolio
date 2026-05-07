@@ -24,7 +24,7 @@ export default function PullQuote({
       <span
         className="absolute select-none pointer-events-none"
         style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Urbanist', sans-serif",
           fontSize: 120,
           color: "#e8e8e8",
           top: -10,
@@ -40,7 +40,7 @@ export default function PullQuote({
       <blockquote
         className="relative z-10"
         style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Urbanist', sans-serif",
           fontSize: 24,
           fontStyle: "normal",
           color: "#0d0d0d",

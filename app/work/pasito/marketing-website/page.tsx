@@ -193,7 +193,7 @@ export default function MarketingWebsitePage() {
       subtitle="Brand identity, visual language, and a four-page site — designed end to end as my first project at a YC-backed fintech startup."
       heroImageSrc="/images/pasito/marketing.png"
       heroImageLabel="Final website design"
-      heroShapes={<HeroShapes />}
+
       meta={{
         role: "UX/UI Designer · Brand Designer",
         timeline: "July 2021",

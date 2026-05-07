@@ -265,7 +265,7 @@ export default function AiBriefPage() {
       subtitle="Three generations of a brief flow. And the insight that users weren't filling out a form — they were trying to have a conversation."
       heroImageLabel="Brief Wizard — Gen 3 agent"
       heroImageSrc="/images/copley/agent.png"
-      heroShapes={<HeroShapes />}
+
       meta={{
         role: "Product Designer",
         timeline: "2025–2026",

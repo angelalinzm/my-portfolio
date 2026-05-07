@@ -56,7 +56,7 @@ export default function SectionBreak({
       <h2
         className="font-bold"
         style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Urbanist', sans-serif",
           fontSize: "clamp(28px, 5vw, 42px)",
           letterSpacing: "-1.5px",
           color: "#0d0d0d",

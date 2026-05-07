@@ -186,7 +186,7 @@ function Diamond() {
 function FutureCard({ title, body, bg }: { title: string; body: string; bg: string }) {
   return (
     <div style={{ background: bg, borderRadius: 16, padding: "18px 22px" }}>
-      <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: "#0d0d0d", marginBottom: 8 }}>
+      <p style={{ fontFamily: "'Urbanist', sans-serif", fontSize: 16, fontWeight: 700, color: "#0d0d0d", marginBottom: 8 }}>
         {title}
       </p>
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 400, color: "rgba(0,0,0,0.6)", lineHeight: 1.65 }}>
@@ -208,7 +208,7 @@ export default function AiOnboardingPage() {
       subtitle="Copley is an AI-heavy marketing platform built for DTC brands. The challenge wasn't teaching users how to use the product — it was getting them to believe it was worth trusting in the first place."
       heroImageSrc="/images/copley/onboarding.png"
       heroImageLabel="Onboarding flow + FTUE agent"
-      heroShapes={<HeroShapes />}
+
       meta={{
         role: "Product Designer",
         timeline: "2025–2026",
@@ -293,7 +293,7 @@ export default function AiOnboardingPage() {
           style={{ gap: "40px 72px", padding: "4px 0 0" }}
         >
           <div />
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 700, color: "#0d0d0d", lineHeight: 1.3 }}>
+          <p style={{ fontFamily: "'Urbanist', sans-serif", fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 700, color: "#0d0d0d", lineHeight: 1.3 }}>
             Users don&apos;t need to be convinced AI is good. They need to{" "}
             <em style={{ color: "#16a34a", fontStyle: "normal" }}>feel in control</em>{" "}
             while it&apos;s working.

@@ -12,7 +12,7 @@ export default function Footer() {
         <Link
           href="/"
           className="font-display text-xl font-bold text-brand-text"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          style={{ fontFamily: "'Urbanist', sans-serif" }}
         >
           al.
         </Link>
