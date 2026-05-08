@@ -47,7 +47,7 @@ function HeroShapes() {
         <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
           <circle
             cx="70" cy="70" r="60"
-            stroke="#fb923c" strokeWidth="2" strokeDasharray="10 7"
+            stroke="#E8690E" strokeWidth="2" strokeDasharray="10 7"
             fill="none" opacity={0.18}
             style={{ animation: "cs-spin 24s linear infinite", transformOrigin: "70px 70px" }}
           />
@@ -80,7 +80,7 @@ function HeroShapes() {
         <svg width="75" height="70" viewBox="0 0 75 70" fill="none">
           <motion.path
             d="M37 5 L68 62 L6 62 Z"
-            stroke="#fb923c" strokeWidth="2.2" fill="none"
+            stroke="#E8690E" strokeWidth="2.2" fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 0.18 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
@@ -88,7 +88,7 @@ function HeroShapes() {
         </svg>
       </motion.div>
 
-      <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#fb923c", opacity: 0.5 }} />
+      <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#E8690E", opacity: 0.5 }} />
       <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#4f46e5", opacity: 0.45 }} />
     </>
@@ -120,7 +120,7 @@ function TwoColRow({
       style={{
         gap: "40px 72px",
         padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        borderBottom: "none",
       }}
     >
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
@@ -187,10 +187,10 @@ export default function MvpPage() {
     <CaseStudyLayout
       backHref="/work"
       eyebrow="Case Study · Pasito · June 2021 – December 2022"
-      accentColor="#fb923c"
+      accentColor="#E8690E"
       headline="Taking Pasito's first product from sketches to validated prototype."
       headlineEmphasis="validated prototype."
-      subtitle="Solo designer. Two dashboards. 20+ user tests. And a design practice built from scratch inside a startup that didn't have one."
+      subtitle="From early sketches to a validated, clickable prototype — research, workshops, and 20+ user interviews that shaped every design decision."
       heroImageSrc="/images/pasito/pasito-home.png"
       heroImageLabel="Pasito MVP — final prototype"
 
@@ -259,11 +259,11 @@ export default function MvpPage() {
         eyebrow="Ideation"
         title="Mapping the experience."
         emphasisWord="experience."
-        emphasisColor="#fb923c"
+        emphasisColor="#E8690E"
         shape="triangle"
-        shapeColor="#fb923c"
+        shapeColor="#E8690E"
         spinDuration={12}
-        dotColor="#fb923c"
+        dotColor="#E8690E"
       />
 
       <Section>
@@ -298,7 +298,7 @@ export default function MvpPage() {
           <BrightCard
             color="blue"
             bg="#d6f1fc"
-            tag="DESIGN PRINCIPLE"
+            tag=""
             title="Make complexity feel approachable."
             titleEmphasis="approachable."
             shape="hexagon"
@@ -309,7 +309,7 @@ export default function MvpPage() {
         </TwoColRow>
 
         {/* Full-width lo-fi screens */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <div className="grid grid-cols-3 gap-4">
             <img src="/images/pasito/lofi-1.png" alt="Question flow — lo-fi" style={{ width: "100%", borderRadius: 16 }} />
             <img src="/images/pasito/lofi-2.png" alt="Paycheck comparison — lo-fi" style={{ width: "100%", borderRadius: 16 }} />
@@ -339,7 +339,7 @@ export default function MvpPage() {
           <BrightCard
             color="violet"
             bg="#ede9fe"
-            tag="KEY INSIGHT"
+            tag=""
             title="The problem wasn't the product. It was the ecosystem."
             titleEmphasis="ecosystem."
             shape="diamond"
@@ -370,7 +370,7 @@ export default function MvpPage() {
         </TwoColRow>
 
         {/* Full-width hi-fi screens */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <img src="/images/pasito/hifi-1.png" alt="Hi-fi screen 1" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />
             <img src="/images/pasito/hifi-2.png" alt="Hi-fi screen 2" style={{ width: "100%", borderRadius: 16, border: "1px solid #e5e5e2" }} />

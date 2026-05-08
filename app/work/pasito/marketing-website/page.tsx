@@ -47,7 +47,7 @@ function HeroShapes() {
         <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
           <circle
             cx="70" cy="70" r="60"
-            stroke="#fb923c" strokeWidth="2" strokeDasharray="10 7"
+            stroke="#E8690E" strokeWidth="2" strokeDasharray="10 7"
             fill="none" opacity={0.18}
             style={{ animation: "cs-spin 24s linear infinite", transformOrigin: "70px 70px" }}
           />
@@ -80,7 +80,7 @@ function HeroShapes() {
         <svg width="75" height="70" viewBox="0 0 75 70" fill="none">
           <motion.path
             d="M37 5 L68 62 L6 62 Z"
-            stroke="#fb923c" strokeWidth="2.2" fill="none"
+            stroke="#E8690E" strokeWidth="2.2" fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 0.18 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.2 }}
@@ -88,7 +88,7 @@ function HeroShapes() {
         </svg>
       </motion.div>
 
-      <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#fb923c", opacity: 0.5 }} />
+      <div className="absolute rounded-full" style={{ top: 90, left: "50%", width: 4, height: 4, background: "#E8690E", opacity: 0.5 }} />
       <div className="absolute rounded-full" style={{ top: "40%", left: 80, width: 3, height: 3, background: "#16a34a", opacity: 0.45 }} />
       <div className="absolute rounded-full" style={{ top: "35%", right: 60, width: 3.5, height: 3.5, background: "#4f46e5", opacity: 0.45 }} />
     </>
@@ -120,7 +120,7 @@ function TwoColRow({
       style={{
         gap: "40px 72px",
         padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        borderBottom: "none",
       }}
     >
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
@@ -187,7 +187,7 @@ export default function MarketingWebsitePage() {
     <CaseStudyLayout
       backHref="/work"
       eyebrow="Case Study · Pasito · July 2021"
-      accentColor="#fb923c"
+      accentColor="#E8690E"
       headline="Building Pasito's brand and website from scratch."
       headlineEmphasis="scratch."
       subtitle="Brand identity, visual language, and a four-page site — designed end to end as my first project at a YC-backed fintech startup."
@@ -251,11 +251,11 @@ export default function MarketingWebsitePage() {
         eyebrow="Information architecture"
         title="Sorting the story."
         emphasisWord="story."
-        emphasisColor="#fb923c"
+        emphasisColor="#E8690E"
         shape="triangle"
-        shapeColor="#fb923c"
+        shapeColor="#E8690E"
         spinDuration={12}
-        dotColor="#fb923c"
+        dotColor="#E8690E"
       />
 
       <Section>
@@ -307,7 +307,7 @@ export default function MarketingWebsitePage() {
           <BrightCard
             color="pink"
             bg="#fce7f3"
-            tag="DESIGN INTENT"
+            tag=""
             title="Curves that connect."
             titleEmphasis="connect."
             shape="hexagon"

@@ -120,7 +120,7 @@ function TwoColRow({
       style={{
         gap: "40px 72px",
         padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        borderBottom: "none",
       }}
     >
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
@@ -208,7 +208,7 @@ export default function ButtonsPage() {
       <Section>
         <TwoColRow label="The Audit">
           <p style={prose}>
-            The PMs came in with a clear brief: consolidate the button types, fix the accessibility issues, and design all the selection screens. Before touching a single frame, I audited what already existed. My first goal was to find what we could reuse — so developers wouldn&apos;t be handed a net-new component build when existing foundations could do the work.
+            The PMs came in with a clear brief: consolidate the button types, fix the accessibility issues, and design all the selection screens. My first goal was to find what we could reuse — so developers wouldn&apos;t be handed a net-new component build when existing foundations could do the work.
           </p>
         </TwoColRow>
 
@@ -251,12 +251,12 @@ export default function ButtonsPage() {
             The original design had a colorful background. My first instinct was to try to save it — to keep the visual personality of the existing experience while fixing the accessibility problems on top of it. I explored multiple selection styles and button types within that constraint.
           </p>
           <p style={prose}>
-            It didn&apos;t work. WCAG requires at least two distinct indicators of selection — not just color. The colorful background was fighting that requirement at every turn. It wasn&apos;t a styling problem. It was the background itself.
+            It didn&apos;t work. WCAG requires at least two distinct indicators of selection — not just color. The colorful background was fighting that requirement at every turn. 
           </p>
         </TwoColRow>
 
         {/* Full-width: early iterations */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {["buttons-1", "buttons-2"].map((name) => (
               <div key={name} style={{ borderRadius: 16, border: "1px solid #e8e8e5", overflow: "hidden" }}>
@@ -267,14 +267,14 @@ export default function ButtonsPage() {
           </div>
         </div>
 
-        <TwoColRow label="The Decision">
+        <TwoColRow label="The Final Design">
           <p style={prose} className="mb-8">
             I dropped the colorful background. Clean white background, clear selection states using both color and shape — two distinct indicators, as required. The button design was inspired by an existing component in the library, which meant developers already had a foundation to build from. The detail that unlocked the whole thing: a small label above each button group clarifying the question context. Tiny, but it made the interaction significantly clearer.
           </p>
           <BrightCard
             color="green"
             bg="#bbf7d0"
-            tag="DESIGN PRINCIPLE"
+            tag=""
             title="Two indicators, not one."
             titleEmphasis="one."
             shape="diamond"
@@ -285,17 +285,20 @@ export default function ButtonsPage() {
         </TwoColRow>
 
         {/* Full-width: final buttons */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <div className="overflow-hidden" style={{ borderRadius: 16, border: "1px solid #e8e8e5" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/well/buttons-final.png" alt="Final button designs" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
         </div>
 
-        <TwoColRow label="Accessibility Test" isLast>
-          <p style={prose} className="mb-8">
+        <TwoColRow label="Accessibility Test">
+          <p style={prose}>
             Final designs were tested for contrast ratios, text scaling, and multi-language support — the three failure modes of the original. All passed.
           </p>
+        </TwoColRow>
+
+        <div style={{ padding: "24px 0" }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto" style={{ maxWidth: "75%" }}>
             {["test-1", "test-2", "test-3"].map((name) => (
               <div key={name} style={{ borderRadius: 16, border: "1px solid #e8e8e5", overflow: "hidden" }}>
@@ -304,7 +307,7 @@ export default function ButtonsPage() {
               </div>
             ))}
           </div>
-        </TwoColRow>
+        </div>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
@@ -314,7 +317,7 @@ export default function ButtonsPage() {
         style={{ paddingTop: 64, paddingBottom: 56, marginTop: 64, borderTop: "1px solid #efefec" }}
       >
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.85 }}>
-          The button system shipped and was added to Well&apos;s component library, where it became the standard for all selection screens across the health journey flow. The lesson I took from it: accessible design isn&apos;t a checklist you run at the end. It&apos;s a forcing function. When you design for contrast, text scaling, and multiple languages from the start, you end up with something cleaner than you would have otherwise.
+          The button system shipped and was added to Well&apos;s component library, where it became the standard for all selection screens across the health journey flow. The lesson I took from it: accessible design isn&apos;t a checklist you run at the end. It&apos;s a forcing function. 
         </p>
       </motion.div>
 

@@ -5,7 +5,6 @@ import CaseStudyLayout from "@/components/case-study/CaseStudyLayout";
 import SectionBreak from "@/components/case-study/SectionBreak";
 import DotLabel from "@/components/case-study/DotLabel";
 import BrightCard from "@/components/case-study/BrightCard";
-import PullQuote from "@/components/case-study/PullQuote";
 
 // ─── Easing ────────────────────────────────────────────────────────────────
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -121,7 +120,7 @@ function TwoColRow({
       style={{
         gap: "40px 72px",
         padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        borderBottom: "none",
       }}
     >
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
@@ -256,7 +255,7 @@ export default function AiOnboardingPage() {
               <BrightCard
                 color="blue"
                 bg="#eff6ff"
-                tag="FEAR 01"
+                tag=""
                 title="'AI will replace me'"
                 titleEmphasis="replace"
                 hideShape
@@ -267,7 +266,7 @@ export default function AiOnboardingPage() {
               <BrightCard
                 color="amber"
                 bg="#fff7ed"
-                tag="FEAR 02"
+                tag=""
                 title="'I don't trust the output'"
                 titleEmphasis="trust"
                 hideShape
@@ -278,7 +277,7 @@ export default function AiOnboardingPage() {
               <BrightCard
                 color="violet"
                 bg="#f5f3ff"
-                tag="FEAR 03"
+                tag=""
                 title="'This is too complex'"
                 titleEmphasis="complex"
                 hideShape
@@ -343,43 +342,16 @@ export default function AiOnboardingPage() {
       <Section>
         <TwoColRow label="Decision 01 — The Insight Card">
           <p style={prose} className="mb-5">
-            Instead of landing on an empty dashboard, users arrive at a ranked list of opportunities already found in their data. The first thing they see after connecting is proof that Copley has been working.
+            The original onboarding was a standard collection form — name, email, company info, integrations — that deposited users onto a blank dashboard with nothing to show for it. There was no signal that Copley had done anything with what they'd shared.
           </p>
           <p style={prose}>
-            The copy pattern was intentional: name the pattern, show the specific number, explain the implication, offer an action. &ldquo;Close-up product shots are your best-performing creative — and you only have 2&rdquo; is not a generic recommendation. It&apos;s a finding, rooted in their account.
+            I redesigned the end of the flow so that once a user connects their integrations, Copley immediately pulls their past ad data and surfaces real opportunities before they ever see the dashboard. The first thing a new user encounters isn't an empty state — it's a personalized insight from their own account. Onboarding stops being a form and starts being a first impression of what the product can actually do.
           </p>
         </TwoColRow>
 
         {/* Full-width: insights screen */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <img src="/images/copley/opportunities.png" alt="Insight card — opportunities screen" style={{ width: "88%", borderRadius: 16, display: "block", margin: "0 auto", border: "1px solid #e5e5e2" }} />
-        </div>
-
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <BrightCard
-              color="green"
-              bg="#f0fdf4"
-              tag="WHAT CHANGED"
-              title="The insight card is the landing page"
-              titleEmphasis="is"
-              shape="hexagon"
-              spinDir="spin"
-              spinDuration={20}
-              body="Specific to their account, ranked by estimated revenue impact. This is the first thing they see after connecting their data — proof that Copley has been working since they signed up."
-            />
-            <BrightCard
-              color="teal"
-              bg="#f0fdfa"
-              tag="WHY IT MATTERS"
-              title="No empty state. Ever."
-              titleEmphasis="Ever."
-              shape="diamond"
-              spinDir="spinr"
-              spinDuration={18}
-              body="An empty dashboard is the worst first impression for an AI-hesitant user. It puts the burden back on them. The insight card removes that entirely — the action is obvious, the value is visible."
-            />
-          </div>
         </div>
 
         <div style={{ marginTop: 56 }}>
@@ -393,7 +365,7 @@ export default function AiOnboardingPage() {
         </TwoColRow>
 
         {/* Full-width: FTUE agent */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <video
             src="/images/copley/ftue.mov"
             autoPlay
@@ -404,23 +376,23 @@ export default function AiOnboardingPage() {
           />
         </div>
 
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <BrightCard
               color="pink"
               bg="#fdf4ff"
-              tag="POWER AGENT (EXISTING)"
+              tag=""
               title="Interview then generate"
               titleEmphasis="Interview"
               shape="triangle"
               spinDir="spinr"
               spinDuration={22}
-              body="Opens cold. 8 configuration questions before a single ad is produced. Designed for power users who know what they want — not a first-timer's entry point."
+              body="8 configuration questions before a single ad is produced. Designed for power users who know what they want — not a first-timer's entry point."
             />
             <BrightCard
               color="blue"
               bg="#eff6ff"
-              tag="FTUE AGENT (NEW)"
+              tag=""
               title="Show then confirm"
               titleEmphasis="Show"
               shape="hexagon"
@@ -468,11 +440,16 @@ export default function AiOnboardingPage() {
           <p style={prose} className="mb-8">
             I designed a trait-based insight system where Copley surfaces specific creative opportunities rooted in actual performance data. The copy pattern: name the pattern, show the number, explain the implication, offer an action.
           </p>
-          <PullQuote
-            quote="Close-up product shots are your best performing creative — and you only have 2. Ads where the product fills more than 60% of the frame averaged a 2.4× higher click-through rate than your lifestyle and flat-lay creative."
-            emphasisWord="2.4× higher click-through rate"
-            source="— Copley insight card, High Impact recommendation"
-            accentColor="#0284c7"
+          <BrightCard
+            color="blue"
+            bg="#eff6ff"
+            tag="Copley Insight Card Example"
+            title="Close-up product shots are your best performing creative — and you only have 2."
+            titleEmphasis="only have 2."
+            shape="hexagon"
+            spinDir="spin"
+            spinDuration={20}
+            body="Ads where the product fills more than 60% of the frame averaged a 2.4× higher click-through rate than your lifestyle and flat-lay creative. — Copley insight card, High Impact recommendation"
           />
         </TwoColRow>
 
@@ -484,7 +461,7 @@ export default function AiOnboardingPage() {
             <BrightCard
               color="violet"
               bg="#f5f3ff"
-              tag="BEFORE"
+              tag=""
               title="Alienating language"
               titleEmphasis="language"
               shape="triangle"
@@ -495,7 +472,7 @@ export default function AiOnboardingPage() {
             <BrightCard
               color="green"
               bg="#f0fdf4"
-              tag="AFTER"
+              tag=""
               title="Trust-building language"
               titleEmphasis="language"
               shape="hexagon"

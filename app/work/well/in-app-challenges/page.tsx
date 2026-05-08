@@ -124,7 +124,7 @@ function TwoColRow({
       style={{
         gap: "40px 72px",
         padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        borderBottom: "none",
       }}
     >
       <p
@@ -165,10 +165,10 @@ function Diamond() {
 function UserPair({ type, desc }: { type: string; desc: string }) {
   return (
     <div>
-      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#0d0d0d", marginBottom: 2 }}>
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, color: "#0d0d0d", marginBottom: 2 }}>
         {type}
       </p>
-      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 300, color: "rgba(0,0,0,0.55)", lineHeight: 1.6 }}>
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 300, color: "rgba(0,0,0,0.55)", lineHeight: 1.6 }}>
         {desc}
       </p>
     </div>
@@ -248,7 +248,9 @@ export default function InAppChallengesPage() {
 
       <Section>
         <TwoColRow label="HEXAD Framework">
-          <p style={prose} className="mb-8">{c.research.para}</p>
+          {c.research.para.split("\n\n").map((p: string, i: number) => (
+            <p key={i} style={prose} className="mb-5">{p}</p>
+          ))}
           <div className="overflow-hidden mx-auto" style={{ borderRadius: 16, maxWidth: "75%" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -260,14 +262,11 @@ export default function InAppChallengesPage() {
         </TwoColRow>
 
         <TwoColRow label="User Types" isLast>
-          <p className="mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
-            HEXAD User Types
-          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <BrightCard
               color={t.hexad.extrinsic.color as "amber"}
               bg="#fff7ed"
-              tag="Extrinsic · motivated by rewards"
+              tag="Extrinsic"
               shape={t.hexad.extrinsic.shape as "diamond"}
               spinDir={t.hexad.extrinsic.spinDir as "spinr"}
               spinDuration={t.hexad.extrinsic.spinDuration}
@@ -282,7 +281,7 @@ export default function InAppChallengesPage() {
             <BrightCard
               color={t.hexad.intrinsic.color as "teal"}
               bg="#f0fdfa"
-              tag="Intrinsic · personally motivated"
+              tag="Intrinsic"
               shape={t.hexad.intrinsic.shape as "hexagon"}
               spinDir={t.hexad.intrinsic.spinDir as "spin"}
               spinDuration={t.hexad.intrinsic.spinDuration}
@@ -330,7 +329,7 @@ export default function InAppChallengesPage() {
         {/* Full-width: user stories image */}
         <div
           className="w-full overflow-hidden"
-          style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}
+          style={{ padding: "40px 0" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -345,7 +344,7 @@ export default function InAppChallengesPage() {
         </TwoColRow>
 
         {/* Full-width: PDF stepper */}
-        <div className="w-full" style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div className="w-full" style={{ padding: "40px 0" }}>
           <PdfStepper src="/images/well/engagement-user-stories.pdf" startPage={13} />
         </div>
 
@@ -355,7 +354,7 @@ export default function InAppChallengesPage() {
             <BrightCard
               color={t.tracks[0].color as "violet"}
               bg="#f5f3ff"
-              tag="Track A"
+              tag=""
               title="Challenges"
               titleItalic
               body="Ongoing engagement mechanics to increase overall app adoption."
@@ -366,7 +365,7 @@ export default function InAppChallengesPage() {
             <BrightCard
               color={t.tracks[1].color as "pink"}
               bg="#fdf4ff"
-              tag="Track B"
+              tag=""
               title="Offers"
               titleItalic
               body="Targeted incentives tied to specific KPIs — may not impact overall adoption."
@@ -407,12 +406,12 @@ export default function InAppChallengesPage() {
           <p style={prose}>{c.design.paras[0]}</p>
         </TwoColRow>
 
-        <TwoColRow label="Key Decisions">
+        <TwoColRow label="">
           <div className="flex flex-col gap-3">
             <BrightCard
               color={t.keyDecisions[0].color as "blue"}
               bg="#eff6ff"
-              tag="Key decision"
+              tag=""
               title='Rewards show "ready to claim" throughout — not just at the end'
               body="Extrinsic users need visible proof the system is working. Making points visible throughout kept the reward loop active even before intrinsic motivation kicked in."
               shape={t.keyDecisions[0].shape as "hexagon"}
@@ -422,7 +421,7 @@ export default function InAppChallengesPage() {
             <BrightCard
               color={t.keyDecisions[1].color as "green"}
               bg="#f0fdf4"
-              tag="The outcome"
+              tag=""
               title="Constraint pushed toward clearer hierarchy"
               body="Rather than relying on complex interactions, the constraint pushed me toward stronger information hierarchy — making the design more accessible, not less."
               shape={t.keyDecisions[1].shape as "diamond"}

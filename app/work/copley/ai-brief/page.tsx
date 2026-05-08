@@ -110,18 +110,20 @@ function TwoColRow({
   label,
   children,
   isLast = false,
+  paddingY = "40px",
 }: {
   label: string;
   children: React.ReactNode;
   isLast?: boolean;
+  paddingY?: string;
 }) {
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-[220px_1fr]"
       style={{
         gap: "40px 72px",
-        padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        padding: `${paddingY} 0`,
+        borderBottom: "none",
       }}
     >
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
@@ -189,8 +191,15 @@ function AutoStepper() {
   return (
     <div className="w-full">
       {/* Image */}
-      <div className="relative w-full overflow-hidden" style={{ borderRadius: 16 }}>
-        <AnimatePresence mode="wait">
+      <div className="relative w-full" style={{ borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.08)" }}>
+        {/* Ghost image to hold layout height */}
+        <img
+          src={`/images/copley/${STEPS[current]}.png`}
+          alt=""
+          aria-hidden="true"
+          style={{ width: "100%", height: "auto", display: "block", visibility: "hidden" }}
+        />
+        <AnimatePresence>
           <motion.img
             key={current}
             src={`/images/copley/${STEPS[current]}.png`}
@@ -199,7 +208,7 @@ function AutoStepper() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            style={{ width: "100%", height: "auto", display: "block" }}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
         </AnimatePresence>
       </div>
@@ -300,7 +309,7 @@ export default function AiBriefPage() {
       <Section>
         <TwoColRow label="The Problem" isLast>
           <p style={prose}>
-            Users weren&apos;t navigating the wizard the way it was designed. They were skipping fields, going back and forth, and — most tellingly — treating the one free-text field as a chat box. They&apos;d type, generate, review, retype. They had turned a brief into a conversation. My job was to make the product catch up.
+            Users weren&apos;t navigating the wizard the way it was designed. They were skipping fields, going back and forth, and treating the one free-text field as a chat box. They&apos;d type, generate, review, retype. They had turned a brief into a conversation. My job was to make the product catch up.
           </p>
         </TwoColRow>
       </Section>
@@ -320,7 +329,7 @@ export default function AiBriefPage() {
       <Section>
         <TwoColRow label="Gen 1 — Brief Form" isLast>
           <p style={prose} className="mb-8">
-            The original brief was a single long-form page — source content, a creativity slider (Basic → Wild), output settings, variant count. Everything visible at once. The AI worked entirely in the background; users made selections, hit generate, and received output. No freeform input. No back-and-forth. No indication the AI had interpreted anything. It treated ad creation like a form. Users treated it like a fight.
+            The original brief was a single long-form page — source content, a creativity slider (Basic → Wild), output settings, variant count. Everything visible at once. The AI worked entirely in the background; users made selections, hit generate, and received output. No freeform input. No back-and-forth. No indication the AI had interpreted anything. It treated ad creation like a form. 
           </p>
           <div className="overflow-hidden" style={{ borderRadius: 16 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -342,25 +351,20 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <TwoColRow label="Gen 2 — 6-Step Wizard">
+        <TwoColRow label="Gen 2 — 6-Step Wizard" isLast>
           <p style={prose} className="mb-5">
             The second generation broke the single page into a 6-step wizard: Ad Type → Ad Source Content → Ad Source → Inspiration → Traits → Creative Direction → Variants → Review. The most significant addition was Step 5: a freeform Ad Concept field where users could describe the brief in their own words, paired with their Brand Kit.
           </p>
           <p style={prose}>
-            But users immediately routed to that one field — rushing through steps 1–5 to get there, then iterating in the prompt box, completely bypassing the structured inputs. The wizard was 6 steps. The real interaction was happening in one box. When a system provides both structured and free-text input, users gravitate toward whichever feels most expressive. The structured fields became overhead.
+            But users immediately routed to that one field — rushing through steps 1–5 to get there, then iterating in the prompt box, completely bypassing the structured inputs. The wizard was 6 steps. The real interaction was happening in one box. When a system provides both structured and free-text input, users gravitate toward whichever feels most expressive.
           </p>
         </TwoColRow>
 
-        {/* Full-width: Gen 2 step-by-step auto stepper */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
-          <AutoStepper />
-        </div>
-
-        <TwoColRow label="Key Insight" isLast>
+        <TwoColRow label="" isLast paddingY="20px">
           <BrightCard
             color="green"
             bg="#f0fdf4"
-            tag="KEY INSIGHT"
+            tag=""
             title="Users weren't filling out a brief. They were prompting."
             titleEmphasis="prompting."
             shape="hexagon"
@@ -369,6 +373,11 @@ export default function AiBriefPage() {
             body="Watching users in sessions, I could see the pattern without anyone needing to name it. The creative direction box had become the product. The rest was noise."
           />
         </TwoColRow>
+
+        {/* Full-width: Gen 2 step-by-step auto stepper */}
+        <div style={{ padding: "40px 0" }}>
+          <AutoStepper />
+        </div>
       </Section>
 
       {/* ══ GEN 3 ════════════════════════════════════════════════════════ */}
@@ -394,7 +403,7 @@ export default function AiBriefPage() {
         </TwoColRow>
 
         {/* Full-width: Gen 3 agent video */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <video
             src="/images/copley/brief-agent.mov"
             autoPlay
@@ -406,11 +415,11 @@ export default function AiBriefPage() {
         </div>
 
         <TwoColRow label="Design Decisions" isLast>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex flex-col gap-3">
             <BrightCard
               color="violet"
               bg="#f5f3ff"
-              tag="DESIGN DECISION"
+              tag=""
               title="Why conversational over wizard?"
               titleEmphasis="wizard?"
               shape="diamond"
@@ -421,7 +430,7 @@ export default function AiBriefPage() {
             <BrightCard
               color="violet"
               bg="#f5f3ff"
-              tag="DESIGN DECISION"
+              tag=""
               title="Why have the AI propose the brief?"
               titleEmphasis="brief?"
               shape="star"
@@ -448,7 +457,7 @@ export default function AiBriefPage() {
       <Section>
         <TwoColRow label="Outcome" isLast>
           <p style={prose}>
-            The Gen 3 conversational agent was presented internally and demoed to select clients, who described the experience as briefing a creative collaborator rather than operating a tool. The work contributed directly to Copley&apos;s evolving identity as an AI-native marketing agent — a direction the company formalized publicly in early 2026 with the launch of its always-on performance marketing platform.
+            The Gen 3 conversational agent was presented internally and launched to clients, who described the experience as briefing a creative collaborator rather than operating a tool. We saw an increase in ad content creation through Copley. Ads were being generated 3x more daily than before. 
           </p>
         </TwoColRow>
       </Section>

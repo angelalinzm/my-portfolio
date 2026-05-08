@@ -45,7 +45,7 @@ export default function PdfStepper({ src, startPage = 1 }: PdfStepperProps) {
       <div
         ref={containerRef}
         className="w-full overflow-hidden"
-        style={{ borderRadius: 16, background: "#f7f7f5", position: "relative" }}
+        style={{ borderRadius: 16, background: "#f7f7f5", position: "relative", border: "1px solid rgba(0,0,0,0.08)" }}
       >
         <Document
           file={src}

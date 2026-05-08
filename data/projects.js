@@ -271,7 +271,7 @@ export const inAppChallengesContent = {
   },
   research: {
     para:
-      "Before designing anything, I wanted to understand the psychology behind habit formation. The insight that unlocked my approach: habits and challenges follow the same four-stage loop. If I could design for how habits actually form, I could design challenges that stick. This led me to research gamer psychology — specifically the HEXAD framework developed by Andrzej Marczewski, which categorizes users by what motivates them. I identified five types relevant to Well, organized around a core tension: extrinsic users (motivated by rewards) vs. intrinsic users (motivated by personal growth). The goal of the challenges system would be to convert extrinsic users into intrinsic ones over time.",
+      "Before designing anything, I wanted to understand the psychology behind habit formation. Habits and challenges follow the same four-stage loop. If I could design for how habits actually form, I could design challenges that stick.\n\nThis led me to research gamer psychology — specifically the HEXAD framework developed by Andrzej Marczewski, which categorizes users by what motivates them. I identified five types relevant to Well, organized around a core tension: extrinsic users (motivated by rewards) vs. intrinsic users (motivated by personal growth). The goal of the challenges system would be to convert extrinsic users into intrinsic ones over time.",
     extrinsic: [
       { type: "Consumer", desc: "Will do what is needed to get rewards." },
       {

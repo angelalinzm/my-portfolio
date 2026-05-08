@@ -287,32 +287,13 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { number: "4+", label: "Years of experience" },
-              { number: "3", label: "Industries" },
-              { number: "0→1", label: "AI platforms launched" },
-              { number: "60+", label: "Components shipped" },
-            ].map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl p-5"
-                style={{ background: "#fff", boxShadow: "0 1px 8px rgba(0,0,0,0.04)" }}
-              >
-                <p
-                  className="text-3xl font-bold text-brand-text mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif" }}
-                >
-                  {stat.number}
-                </p>
-                <p
-                  className="text-xs font-medium text-brand-text/50"
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+          <div className="rounded-3xl overflow-hidden mx-auto" style={{ height: 320, aspectRatio: "3/4" }}>
+            <img
+              src="/images/me.JPG"
+              alt="Angela Lin"
+              className="w-full h-full object-cover object-top"
+              style={{ transform: "scale(1.2) translateY(-5%)", transformOrigin: "top center" }}
+            />
           </div>
         </div>
       </section>

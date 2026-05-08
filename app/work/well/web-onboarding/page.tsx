@@ -121,7 +121,7 @@ function TwoColRow({
       style={{
         gap: "40px 72px",
         padding: "40px 0",
-        borderBottom: isLast ? "none" : "0.5px solid #f5f5f2",
+        borderBottom: "none",
       }}
     >
       <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 500, fontSize: 18, color: "#0d0d0d", paddingTop: 2 }}>
@@ -258,9 +258,6 @@ export default function WebOnboardingPage() {
           <p style={prose} className="mb-5">
             This was my first time designing for responsive breakpoints. Rather than just figuring it out as I went, I spent time doing extensive research on breakpoint systems and responsive design principles — then documented everything I learned in Confluence for the broader design team&apos;s library.
           </p>
-          <p style={prose}>
-            That documentation became a reference resource for the team. It was one of the first times I understood that the work you do to help yourself learn has value beyond you.
-          </p>
         </TwoColRow>
       </Section>
 
@@ -279,26 +276,15 @@ export default function WebOnboardingPage() {
       <Section>
         <TwoColRow label="The Illustration">
           <p style={prose} className="mb-8">
-            The brief asked for something that &lsquo;embodies Well&apos;s mission.&rsquo; That&apos;s an open-ended prompt — which meant I had a real creative opportunity, and real pressure to get it right.
+            The brief asked for something that &lsquo;embodies Well&apos;s mission, an open-ended prompt that allowed me to explore creatively.
           </p>
           <p style={prose} className="mb-8">
             I spent a full month creating, testing, and iterating on the illustration before my team and I were satisfied. The final design tells the story of a user moving forward through their health journey — stepping through a series of panels, each representing a different dimension of wellbeing: sleep, nutrition, habits, rewards. The figure moves through them with momentum, forward-facing, progressing toward their goals.
           </p>
-          <BrightCard
-            color="green"
-            bg="#f0fdf4"
-            tag="DESIGN INTENT"
-            title="Well isn't a destination. It's a journey."
-            titleEmphasis="journey."
-            shape="diamond"
-            spinDir="spin"
-            spinDuration={18}
-            body="The metaphor was intentional. The illustration needed to feel active — not aspirational in a passive way. The figure doesn't arrive somewhere. They're always moving."
-          />
         </TwoColRow>
 
         {/* Full-width: Illustration iterations */}
-        <div style={{ borderBottom: "0.5px solid #f5f5f2", padding: "40px 0" }}>
+        <div style={{ padding: "40px 0" }}>
           <p className="mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d" }}>
             Illustration Iterations
           </p>
@@ -347,17 +333,6 @@ export default function WebOnboardingPage() {
           <p style={prose} className="mb-8">
             The ideal solution would have been a mobile deep link — tap a button, open the app. But that technology hadn&apos;t been developed yet, and there were security constraints that ruled it out. I explored a few alternatives before landing on the QR code approach the PMs had proposed. It wasn&apos;t my first choice aesthetically, but it was the right call given the constraints — it kept users from getting stuck on web without requiring infrastructure we didn&apos;t have.
           </p>
-          <BrightCard
-            color="amber"
-            bg="#fff7ed"
-            tag="DESIGN PRINCIPLE"
-            title="Sometimes good design is the honest solution."
-            titleEmphasis="honest"
-            shape="triangle"
-            spinDir="spinr"
-            spinDuration={16}
-            body="Not the most elegant one — the most truthful one. The QR code told users exactly what the product could do right now. That's not a compromise. That's a decision."
-          />
         </TwoColRow>
       </Section>
 
@@ -374,10 +349,13 @@ export default function WebOnboardingPage() {
       />
 
       <Section>
-        <TwoColRow label="Deliverables" isLast>
-          <p style={prose} className="mb-8">
+        <TwoColRow label="Deliverables">
+          <p style={prose}>
             I delivered fully responsive designs across three breakpoints — desktop, tablet (iPad Pro 11&rdquo;), and mobile (iPhone X) — along with the final illustration.
           </p>
+        </TwoColRow>
+
+        <div style={{ padding: "24px 0" }}>
           <div className="flex gap-6 items-start">
             <div className="flex flex-col gap-2" style={{ flex: 1.4 }}>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, color: "#0d0d0d", marginBottom: 4 }}>Desktop</p>
@@ -405,7 +383,7 @@ export default function WebOnboardingPage() {
               </div>
             </div>
           </div>
-        </TwoColRow>
+        </div>
       </Section>
 
       {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
@@ -415,7 +393,7 @@ export default function WebOnboardingPage() {
         style={{ paddingTop: 64, paddingBottom: 56 }}
       >
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.8 }}>
-          The web onboarding shipped and was received positively. Looking back, the constraint that felt most frustrating at the time — the QR code — turned out to be the most clarifying design decision of the project. It forced me to ask: what does honesty look like in a product experience? The answer was simpler than I expected.
+          The web onboarding shipped and was received positively. The QR code was realized as a supplement to the Google and Apple app download buttons. The team was able to collect 1.5x more sign-ups in a quick and efficient way without users even needing to log into the app.
         </p>
       </motion.div>
 

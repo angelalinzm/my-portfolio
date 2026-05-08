@@ -66,7 +66,7 @@ export default function BrightCard({
   size = "default",
   number,
   children,
-  hideShape = false,
+  hideShape = true,
 }: BrightCardProps) {
   const isSmall = size === "small";
   const svgSize   = isSmall ? 80  : 120;
