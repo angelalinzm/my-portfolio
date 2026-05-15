@@ -174,7 +174,7 @@ export const companies = [
   {
     id: "pasito",
     name: "Pasito",
-    dates: "Jun 2021–Present",
+    dates: "Jun 2021–Dec 2023",
     descriptor: "YCombinator backed",
     descriptorColor: "amber",
     title: "Fintech · HR communications platform",

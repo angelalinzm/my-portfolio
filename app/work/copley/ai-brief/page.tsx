@@ -176,17 +176,19 @@ function ImgBox({ label, hexColor, height }: { label: string; hexColor: string; 
 }
 
 // ─── Auto-advancing step image viewer ──────────────────────────────────────
-const STEPS = ["step-1", "step-2", "step-3", "step-4", "step-5", "step-6"];
+const STEPS = ["step-1", "step-2", "step-3", "step-4", "step-5", "step-6", "step-7", "step-8", "step-9"];
 
 function AutoStepper() {
   const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
+    if (!playing) return;
     const id = setInterval(() => {
       setCurrent((prev) => (prev + 1) % STEPS.length);
     }, 5000);
     return () => clearInterval(id);
-  }, []);
+  }, [playing]);
 
   return (
     <div className="w-full">
@@ -215,9 +217,27 @@ function AutoStepper() {
 
       {/* Dot indicators + step label */}
       <div className="flex items-center justify-between mt-4">
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 400, color: "#aaa" }}>
-          Step {current + 1} of {STEPS.length}
-        </p>
+        <div className="flex items-center gap-3">
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 400, color: "#aaa" }}>
+            Step {current + 1} of {STEPS.length}
+          </p>
+          <button
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? "Pause autoplay" : "Resume autoplay"}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", color: "#aaa" }}
+          >
+            {playing ? (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
+                <rect x="2" y="1" width="4" height="12" rx="1" />
+                <rect x="8" y="1" width="4" height="12" rx="1" />
+              </svg>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
+                <path d="M3 1.5l9 5.5-9 5.5V1.5z" />
+              </svg>
+            )}
+          </button>
+        </div>
         <div className="flex items-center gap-2">
           {STEPS.map((_, i) => (
             <button
@@ -242,10 +262,10 @@ function AutoStepper() {
       {/* Progress bar */}
       <div style={{ height: 2, background: "#f0f0ed", borderRadius: 2, marginTop: 10 }}>
         <motion.div
-          key={current}
+          key={`${current}-${playing}`}
           initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 5, ease: "linear" }}
+          animate={{ width: playing ? "100%" : "0%" }}
+          transition={{ duration: playing ? 5 : 0, ease: "linear" }}
           style={{ height: "100%", background: "#4f46e5", borderRadius: 2 }}
         />
       </div>
@@ -327,15 +347,18 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <TwoColRow label="Gen 1 — Brief Form" isLast>
-          <p style={prose} className="mb-8">
-            The original brief was a single long-form page — source content, a creativity slider (Basic → Wild), output settings, variant count. Everything visible at once. The AI worked entirely in the background; users made selections, hit generate, and received output. No freeform input. No back-and-forth. No indication the AI had interpreted anything. It treated ad creation like a form. 
+        <TwoColRow label="Gen 1 — Brief Form">
+          <p style={prose}>
+            The original brief was a single long-form page — source content, a creativity slider (Basic → Wild), output settings, variant count. Everything visible at once. The AI worked entirely in the background; users made selections, hit generate, and received output. No freeform input. No back-and-forth. No indication the AI had interpreted anything. It treated ad creation like a form.
           </p>
-          <div className="overflow-hidden" style={{ borderRadius: 16 }}>
+        </TwoColRow>
+
+        <div style={{ padding: "24px 0" }}>
+          <div className="overflow-hidden mx-auto" style={{ borderRadius: 16, maxWidth: "75%", border: "1px solid rgba(0,0,0,0.08)" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/copley/gen-1.png" alt="Gen 1 brief form" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
-        </TwoColRow>
+        </div>
       </Section>
 
       {/* ══ GEN 2 ════════════════════════════════════════════════════════ */}
@@ -351,12 +374,12 @@ export default function AiBriefPage() {
       />
 
       <Section>
-        <TwoColRow label="Gen 2 — 6-Step Wizard" isLast>
+        <TwoColRow label="Gen 2 — 8-Step Wizard" isLast>
           <p style={prose} className="mb-5">
-            The second generation broke the single page into a 6-step wizard: Ad Type → Ad Source Content → Ad Source → Inspiration → Traits → Creative Direction → Variants → Review. The most significant addition was Step 5: a freeform Ad Concept field where users could describe the brief in their own words, paired with their Brand Kit.
+            The second generation broke the single page into a 8-step wizard: Ad Type → Ad Source Content → Ad Source → Inspiration → Traits → Creative Direction → Variants → Review. The most significant addition was Step 5: a freeform Ad Concept field where users could describe the brief in their own words, paired with their Brand Kit.
           </p>
           <p style={prose}>
-            But users immediately routed to that one field — rushing through steps 1–5 to get there, then iterating in the prompt box, completely bypassing the structured inputs. The wizard was 6 steps. The real interaction was happening in one box. When a system provides both structured and free-text input, users gravitate toward whichever feels most expressive.
+            But users immediately routed to that one field — rushing through steps 1–5 to get there, then iterating in the prompt box, completely bypassing the structured inputs. The wizard was 8 steps. The real interaction was happening in one box. When a system provides both structured and free-text input, users gravitate toward whichever feels most expressive.
           </p>
         </TwoColRow>
 
@@ -461,17 +484,6 @@ export default function AiBriefPage() {
           </p>
         </TwoColRow>
       </Section>
-
-      {/* ══ CLOSING ══════════════════════════════════════════════════════ */}
-      <motion.div
-        {...fadeUp()}
-        className="px-8 md:px-12"
-        style={{ paddingTop: 64, paddingBottom: 56, marginTop: 64, borderTop: "1px solid #efefec" }}
-      >
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: 18, color: "#0d0d0d", lineHeight: 1.85 }}>
-          Taking a brief flow through three generations taught me that the best AI interfaces don&apos;t ask users to adapt to the machine. They meet users where creative thinking already happens — in conversation, in reaction, in the back-and-forth of refining an idea. The product didn&apos;t just get better. The model of what it was changed entirely.
-        </p>
-      </motion.div>
 
       {/* ══ SKILLS & TOOLS ═══════════════════════════════════════════════ */}
       <motion.div
